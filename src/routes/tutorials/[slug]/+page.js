@@ -3,6 +3,8 @@ import { error } from '@sveltejs/kit';
 
 const mods = import.meta.glob('/src/content/tutorials/*.md');
 
+export const prerender = true;
+
 export function entries() {
 	return tutorials.map((t) => ({ slug: t.slug }));
 }

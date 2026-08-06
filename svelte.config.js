@@ -36,5 +36,8 @@ export default {
 	],
 	kit: {
 		adapter: adapter(),
+		prerender: {
+			handleUnseenRoutes: 'ignore',
+		},
 	},
 };
