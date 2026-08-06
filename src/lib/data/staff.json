@@ -1,23 +1,114 @@
 [
   {
-    "name": "Dr. Elena Marsh",
+    "name": "Deepak Gangadharan",
     "role": "Instructor",
-    "bio": "Systems researcher focused on distributed storage. Teaching OS & Networks since 2019.",
-    "email": "emarsh@university.edu",
-    "hours": "Tue 2–4pm, Rm 412"
+    "bio": "Assistant Professor at IIIT Hyderabad. Part of Computer Systems Group.",
+    "email": "",
+    "hours": ""
   },
   {
-    "name": "Raj Patel",
+    "name": "Gautam Bhetanabhotla",
     "role": "Teaching Assistant",
-    "bio": "PhD student working on kernel scheduling. Runs Tutorials 1 & 2.",
-    "email": "rpatel@university.edu",
-    "hours": "Mon 10am–12pm, Rm 218"
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
   },
   {
-    "name": "Sofia Chen",
+    "name": "Shubham Goel",
     "role": "Teaching Assistant",
-    "bio": "MS student focused on networked systems. Runs Tutorial 3 and grades assignments.",
-    "email": "schen@university.edu",
-    "hours": "Wed 1–3pm, Rm 218"
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Advait Dintakurti",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Devansh Bansal",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Kartik Gupta",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Kausheya Roy",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Laveena Jain",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Manav Beriwal",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Mohammed Sami",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Mohit Sriram",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Samyak Jain",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Shivek Gupta",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Shrinivas Joshi",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Tatva Agarwal",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Veena Ramadas",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
   }
 ]

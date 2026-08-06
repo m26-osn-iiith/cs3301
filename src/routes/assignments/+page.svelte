@@ -16,40 +16,53 @@
 </script>
 
 <svelte:head>
-  <title>Assignments — CS3.301</title>
+  <title>Mini-Projects — CS3.301</title>
 </svelte:head>
 
 <div class="page-header">
-  <h1>Assignments</h1>
-  <p>{assignments.length} assignments · Fall 2026</p>
+  <h1>Mini-Projects</h1>
+  <p>Monsoon 2026</p>
 </div>
 
-<div class="list">
-  {#each assignments as a}
-    <a href="/assignments/{a.slug}" class="card assign-card">
-      <div class="card-meta">
-        <span class="badge badge-milestone">Assignment {a.n}</span>
-        {#if status(a) === 'unreleased'}
-          <span class="status-tag unreleased">Not yet released</span>
-        {:else if status(a) === 'closed'}
-          <span class="status-tag closed">Closed</span>
-        {:else}
-          <span class="status-tag open">Open</span>
-        {/if}
-      </div>
-      <div class="card-title">{a.title}</div>
-      <div class="card-desc">{a.summary}</div>
-      <div class="card-dates">
-        {#if a.released}
-          <span>Released {fmtdate(a.released)}</span>
-        {/if}
-        <span>Due {fmtdate(a.due)}</span>
-      </div>
-    </a>
-  {/each}
-</div>
+{#if assignments.length === 0}
+  <div class="empty">No mini-projects yet.</div>
+{:else}
+  <div class="list">
+    {#each assignments as a}
+      <a href="/assignments/{a.slug}" class="card assign-card">
+        <div class="card-meta">
+          <span class="badge badge-milestone">Mini-Project {a.n}</span>
+          {#if status(a) === 'unreleased'}
+            <span class="status-tag unreleased">Not yet released</span>
+          {:else if status(a) === 'closed'}
+            <span class="status-tag closed">Closed</span>
+          {:else}
+            <span class="status-tag open">Open</span>
+          {/if}
+        </div>
+        <div class="card-title">{a.title}</div>
+        <div class="card-desc">{a.summary}</div>
+        <div class="card-dates">
+          {#if a.released}
+            <span>Released {fmtdate(a.released)}</span>
+          {/if}
+          <span>Due {fmtdate(a.due)}</span>
+        </div>
+      </a>
+    {/each}
+  </div>
+{/if}
 
 <style>
+  .empty {
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-4);
+    font-size: 14px;
+  }
+
   .list {
     display: flex;
     flex-direction: column;

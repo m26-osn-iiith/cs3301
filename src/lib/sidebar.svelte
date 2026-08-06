@@ -19,7 +19,7 @@
       type: 'group', label: 'Lectures', href: '/lectures', items: lectures.map(l => ({ label: l.title, href: `/lectures/${l.slug}` }))
     },
     {
-      type: 'group', label: 'Assignments', href: '/assignments', items: assignments.map(a => ({ label: a.title, href: `/assignments/${a.slug}` }))
+      type: 'group', label: 'Mini-Projects', href: '/assignments', items: assignments.map(a => ({ label: a.title, href: `/assignments/${a.slug}` }))
     },
     {
       type: 'group', label: 'Tutorials', href: '/tutorials', items: tutorials.map(t => ({ label: t.title, href: `/tutorials/${t.slug}` }))
@@ -121,7 +121,7 @@
 </nav>
 
 <div class="footer">
-  <a href="https://github.com/m26-osn-iiith/osn-m26" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
+  <a href="https://github.com/m26-osn-iiith/cs3301" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
     <Github size={16} strokeWidth={2} />
   </a>
   <button class="icon-btn" onclick={toggletheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>

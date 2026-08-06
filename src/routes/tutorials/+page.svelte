@@ -12,23 +12,36 @@
 
 <div class="page-header">
   <h1>Tutorials</h1>
-  <p>{tutorials.length} tutorials · Fall 2026</p>
+  <p>Monsoon 2026</p>
 </div>
 
-<div class="list">
-  {#each tutorials as t}
-    <a href="/tutorials/{t.slug}" class="card tutorial-card">
-      <div class="card-meta">
-        <span class="badge badge-tutorial">Tutorial {t.n}</span>
-        <span class="card-date">{fmtdate(t.date)}</span>
-      </div>
-      <div class="card-title">{t.title}</div>
-      <div class="card-desc">{t.summary}</div>
-    </a>
-  {/each}
-</div>
+{#if tutorials.length === 0}
+  <div class="empty">No tutorials yet.</div>
+{:else}
+  <div class="list">
+    {#each tutorials as t}
+      <a href="/tutorials/{t.slug}" class="card tutorial-card">
+        <div class="card-meta">
+          <span class="badge badge-tutorial">Tutorial {t.n}</span>
+          <span class="card-date">{fmtdate(t.date)}</span>
+        </div>
+        <div class="card-title">{t.title}</div>
+        <div class="card-desc">{t.summary}</div>
+      </a>
+    {/each}
+  </div>
+{/if}
 
 <style>
+  .empty {
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-4);
+    font-size: 14px;
+  }
+
   .list {
     display: flex;
     flex-direction: column;

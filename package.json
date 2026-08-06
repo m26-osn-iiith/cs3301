@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@tabler/icons-svelte": "^3.46.0",
-    "lucide-svelte": "^1.0.1"
+    "lucide-svelte": "^1.0.1",
+    "rehype-slug": "^6.0.0"
   }
 }

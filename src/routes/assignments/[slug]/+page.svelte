@@ -17,11 +17,11 @@
 </svelte:head>
 
 <div class="detail">
-  <a href="/assignments" class="breadcrumb">Assignments</a>
+  <a href="/assignments" class="breadcrumb">Mini-Projects</a>
 
   <h1 class="title">{meta.title}</h1>
   <div class="meta">
-    Assignment {meta.n}
+    Mini-Project {meta.n}
     {#if meta.released}
       · Released {fmtdate(meta.released)} · Due {fmtdate(meta.due)}
     {:else}
@@ -29,7 +29,9 @@
     {/if}
   </div>
 
-  <p class="summary">{meta.summary}</p>
+  {#if meta.summary}
+    <p class="summary">{meta.summary}</p>
+  {/if}
 
   <Prose>
     <svelte:component this={Content} />
@@ -84,7 +86,7 @@
   .meta {
     font-size: 13.5px;
     color: var(--text-3);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .unreleased {
@@ -96,7 +98,7 @@
     font-size: 15px;
     color: var(--text-2);
     line-height: 1.65;
-    margin-bottom: 36px;
+    margin-bottom: 20px;
     border-left: 2px solid var(--border-strong);
     padding-left: 16px;
   }

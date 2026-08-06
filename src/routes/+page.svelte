@@ -6,13 +6,13 @@
   const upcoming = events.filter(e => e.date >= today && e.type !== 'holiday').slice(0, 3);
 
   const sections = [
-    { label: 'Calendar', href: '/calendar', desc: 'Lectures, deadlines & exams' },
-    { label: 'Lectures', href: '/lectures', desc: '4 lectures, OS & networking' },
-    { label: 'Mini-Projects', href: '/assignments', desc: '3 hands-on C projects' },
-    { label: 'Tutorials', href: '/tutorials', desc: 'Setup & skills walkthroughs' },
-    { label: 'Course Project', href: '/project', desc: 'Semester-long build' },
+    { label: 'Calendar', href: '/calendar', desc: 'Schedule & deadlines' },
+    { label: 'Lectures', href: '/lectures', desc: 'Slides & readings' },
+    { label: 'Mini-Projects', href: '/assignments', desc: 'Hands-on projects' },
+    { label: 'Tutorials', href: '/tutorials', desc: 'Walkthroughs & setup' },
+    { label: 'Course Project', href: '/project', desc: 'TBA' },
     { label: 'Resources', href: '/resources', desc: 'Texts, docs & tools' },
-    { label: 'Course Policy', href: '/policy', desc: 'Grading & late policy' },
+    { label: 'Course Policy', href: '/policy', desc: 'Grading & rules' },
     { label: 'Staff', href: '/staff', desc: 'Instructor & TAs' },
   ];
 

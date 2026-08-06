@@ -16,7 +16,9 @@
 
   <h1 class="title">{meta.title}</h1>
 
-  <p class="summary">{meta.summary}</p>
+  {#if meta.summary}
+    <p class="summary">{meta.summary}</p>
+  {/if}
 
   <Prose>
     <svelte:component this={Content} />
@@ -65,14 +67,14 @@
     font-weight: 700;
     color: var(--text);
     line-height: 1.2;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .summary {
     font-size: 15px;
     color: var(--text-2);
     line-height: 1.65;
-    margin-bottom: 36px;
+    margin-bottom: 20px;
     border-left: 2px solid var(--border-strong);
     padding-left: 16px;
   }

@@ -5,26 +5,32 @@ description: Grading, attendance, and academic integrity for CS3.301.
 
 ## Grading
 
+The grading distribution for the course is as follows:
+
 | Component | Weight |
-|-----------|--------|
-| Assignments (3) | 30% |
-| Course Project | 25% |
-| Midterm Exam | 20% |
-| Final Exam | 20% |
-| Participation | 5% |
+|---|---|
+| Quiz | 10% |
+| Mid-term Exam | 15% |
+| End-Sem Exam | 25% |
+| Mini Projects | 25% |
+| Project | 25% |
+| In-class participation / Bonus | 5% |
 
-## Late Policy
+## Course logistics
 
-Assignments may be submitted up to **48 hours late** with a 10% penalty per 24 hours. After 48 hours, submissions will not be accepted without prior arrangement. Contact the instructor before the deadline if you anticipate issues.
+- **Announcements, materials, and information**: Moodle.
+- **Instructor office hours**: will be announced soon.
+- **TA office hours**: will be announced after TAs are finalized. Timing must be followed strictly.
+- **Plagiarism**: zero tolerance. Can result in an F grade.
+- **Class timings**: please respect them.
 
-## Attendance
+## Use of AI tools
 
-Attendance is not formally graded, but lecture content appears on exams and tutorials require in-person participation. If you must miss class, review the lecture notes and check with a classmate for anything you missed.
+> Note: this section is subject to change
 
-## Collaboration
+AI tools are allowed for mini projects and the project, but use them wisely.
 
-You are encouraged to discuss concepts with classmates, but all code and write-ups must be your own. Clearly document any external resources or discussions in your submission. When in doubt, ask.
-
-## Academic Integrity
-
-This course follows the university's academic integrity policy. Submitting another student's work, using unauthorised AI tools to write submitted code, or misrepresenting your contributions will result in a failing grade for the assignment and may be referred to the academic integrity committee.
+- Acknowledge which tool you used and how.
+- Include the prompt you used and a screenshot of the output.
+- You are expected to understand any code you generate.
+- Improperly acknowledged AI use may be awarded a 0.

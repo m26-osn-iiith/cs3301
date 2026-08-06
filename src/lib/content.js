@@ -3,13 +3,13 @@ const tutorialmod = import.meta.glob('/src/content/tutorials/*.md', { eager: tru
 const assignmod = import.meta.glob('/src/content/assignments/*.md', { eager: true });
 const resourcemod = import.meta.glob('/src/content/resources/*.md', { eager: true });
 
-function collect(modules, sortkey = 'n') {
+function collect(modules, sortkey = 'slug') {
 	return Object.entries(modules)
 		.map(([path, mod]) => ({
 			slug: path.split('/').pop().replace('.md', ''),
 			...mod.metadata,
 		}))
-		.sort((a, b) => (a[sortkey] ?? 0) - (b[sortkey] ?? 0));
+		.sort((a, b) => String(a[sortkey] ?? '').localeCompare(String(b[sortkey] ?? ''), undefined, { numeric: true }));
 }
 
 export const lectures = collect(lecturemod);

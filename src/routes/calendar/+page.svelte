@@ -26,31 +26,44 @@
 
 <div class="page-header">
   <h1>Calendar</h1>
-  <p>All lectures, tutorials, assignments, and exams for Fall 2026.</p>
+  <p>Monsoon 2026</p>
 </div>
 
-<div class="months">
-  {#each Object.entries(bymonth) as [month, evs]}
-    <section class="month-section">
-      <h2 class="month-label">{month}</h2>
-      <div class="event-list">
-        {#each evs as ev}
-          <div class="event-row">
-            <span class="event-date">{fmtdate(ev.date)}</span>
-            <span class="badge badge-{ev.type}">{typelabel[ev.type] ?? ev.type}</span>
-            {#if ev.route}
-              <a href={ev.route} class="event-title">{ev.title}</a>
-            {:else}
-              <span class="event-title plain">{ev.title}</span>
-            {/if}
-          </div>
-        {/each}
-      </div>
-    </section>
-  {/each}
-</div>
+{#if events.length === 0}
+  <div class="empty">No events yet.</div>
+{:else}
+  <div class="months">
+    {#each Object.entries(bymonth) as [month, evs]}
+      <section class="month-section">
+        <h2 class="month-label">{month}</h2>
+        <div class="event-list">
+          {#each evs as ev}
+            <div class="event-row">
+              <span class="event-date">{fmtdate(ev.date)}</span>
+              <span class="badge badge-{ev.type}">{typelabel[ev.type] ?? ev.type}</span>
+              {#if ev.route}
+                <a href={ev.route} class="event-title">{ev.title}</a>
+              {:else}
+                <span class="event-title plain">{ev.title}</span>
+              {/if}
+            </div>
+          {/each}
+        </div>
+      </section>
+    {/each}
+  </div>
+{/if}
 
 <style>
+  .empty {
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-4);
+    font-size: 14px;
+  }
+
   .months {
     display: flex;
     flex-direction: column;

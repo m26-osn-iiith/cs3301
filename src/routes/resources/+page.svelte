@@ -8,19 +8,32 @@
 
 <div class="page-header">
   <h1>Resources</h1>
-  <p>Textbooks, reference docs, and tools for the course.</p>
+  <p>Monsoon 2026</p>
 </div>
 
-<div class="list">
-  {#each resources as r}
-    <a href="/resources/{r.slug}" class="card resource-card">
-      <div class="card-title">{r.title}</div>
-      <div class="card-desc">{r.summary}</div>
-    </a>
-  {/each}
-</div>
+{#if resources.length === 0}
+  <div class="empty">No resources yet.</div>
+{:else}
+  <div class="list">
+    {#each resources as r}
+      <a href="/resources/{r.slug}" class="card resource-card">
+        <div class="card-title">{r.title}</div>
+        <div class="card-desc">{r.summary}</div>
+      </a>
+    {/each}
+  </div>
+{/if}
 
 <style>
+  .empty {
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-4);
+    font-size: 14px;
+  }
+
   .list {
     display: flex;
     flex-direction: column;

@@ -208,7 +208,7 @@ code, pre {
 }
 
 .page-header {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .page-header h1 {
@@ -236,6 +236,10 @@ code, pre {
   margin-top: 40px;
   margin-bottom: 16px;
   line-height: 1.2;
+}
+
+.prose > :first-child {
+  margin-top: 0.75em;
 }
 
 .prose h2 {
@@ -297,7 +301,6 @@ code, pre {
 .prose blockquote {
   border-left: 2px solid var(--border-strong);
   color: var(--md-muted);
-  font-style: italic;
   padding-left: 16px;
   margin: 20px 0;
 }
