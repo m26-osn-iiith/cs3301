@@ -3,14 +3,13 @@
   let { children } = $props();
   let ref = $state(null);
 
-  onMount(() => {
-    if (!ref) return;
-    ref.querySelectorAll('pre.shiki').forEach(block => {
+  function inject(root) {
+    root.querySelectorAll('pre.shiki').forEach(block => {
+      if (block.parentNode?.classList.contains('code-block')) return;
       const wrapper = document.createElement('div');
       wrapper.className = 'code-block';
       block.parentNode.insertBefore(wrapper, block);
       wrapper.appendChild(block);
-
       const btn = document.createElement('button');
       btn.className = 'copy-btn';
       btn.textContent = 'Copy';
@@ -22,6 +21,14 @@
       });
       wrapper.appendChild(btn);
     });
+  }
+
+  onMount(() => {
+    if (!ref) return;
+    inject(ref);
+    const observer = new MutationObserver(() => inject(ref));
+    observer.observe(ref, { childList: true, subtree: true });
+    return () => observer.disconnect();
   });
 </script>
 

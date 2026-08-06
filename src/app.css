@@ -272,8 +272,14 @@ code, pre {
   margin-bottom: 18px;
 }
 
-.prose ul,
+.prose ul {
+  list-style: disc;
+  margin-bottom: 18px;
+  padding-left: 24px;
+}
+
 .prose ol {
+  list-style: decimal;
   margin-bottom: 18px;
   padding-left: 24px;
 }

@@ -5,6 +5,7 @@
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import Sun from 'lucide-svelte/icons/sun';
   import Moon from 'lucide-svelte/icons/moon';
+  import Github from '@tabler/icons-svelte/icons/brand-github';
   import { course } from '$lib/data/course.js';
   import { lectures, tutorials, assignments, resources } from '$lib/content.js';
 
@@ -120,13 +121,14 @@
 </nav>
 
 <div class="footer">
-  <button class="theme-toggle" onclick={toggletheme}>
+  <a href="https://github.com/m26-osn-iiith/osn-m26" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
+    <Github size={16} strokeWidth={2} />
+  </a>
+  <button class="icon-btn" onclick={toggletheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
     {#if theme === 'dark'}
       <Sun size={16} strokeWidth={2} />
-      <span>Light mode</span>
     {:else}
       <Moon size={16} strokeWidth={2} />
-      <span>Dark mode</span>
     {/if}
   </button>
 </div>
@@ -157,12 +159,12 @@
   .nav {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
     flex: 1;
   }
 
   .spacer {
-    height: 6px;
+    height: 4px;
   }
 
   .nav-item {
@@ -238,27 +240,28 @@
   .footer {
     margin-top: auto;
     padding-top: 14px;
-    border-top: 1px solid var(--border);
-  }
-
-  .theme-toggle {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 7px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: transparent;
-    width: 100%;
-    cursor: pointer;
-    color: var(--text-2);
-    font-size: 13px;
-    font-weight: 600;
-    font-family: inherit;
-    transition: border-color 0.12s;
+    justify-content: space-between;
   }
 
-  .theme-toggle:hover {
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: border-color 0.12s, color 0.12s;
+  }
+
+  .icon-btn:hover {
     border-color: var(--border-strong);
+    color: var(--text);
   }
 </style>
