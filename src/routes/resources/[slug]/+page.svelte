@@ -1,29 +1,29 @@
 <script>
   let { data } = $props();
-  const { resource, prev, next } = $derived(data);
+  const { component: Content, meta, prev, next } = $derived(data);
 </script>
 
 <svelte:head>
-  <title>{resource.title} — CS3.301</title>
+  <title>{meta.title} — CS3.301</title>
 </svelte:head>
 
 <div class="detail">
   <a href="/resources" class="back">← Resources</a>
 
   <div class="detail-header">
-    <h1 class="detail-title">{resource.title}</h1>
+    <h1 class="detail-title">{meta.title}</h1>
   </div>
 
-  <p class="detail-summary">{resource.summary}</p>
+  <p class="detail-summary">{meta.summary}</p>
 
-  <div class="content-placeholder">
-    <p class="placeholder-text">Resource content will appear here.</p>
+  <div class="prose">
+    <svelte:component this={Content} />
   </div>
 
   <nav class="prevnext">
     <div class="prev">
       {#if prev}
-        <a href="/resources/{prev.id}" class="prevnext-link">
+        <a href="/resources/{prev.slug}" class="prevnext-link">
           <span class="prevnext-label">← Previous</span>
           <span class="prevnext-title">{prev.title}</span>
         </a>
@@ -31,7 +31,7 @@
     </div>
     <div class="next">
       {#if next}
-        <a href="/resources/{next.id}" class="prevnext-link">
+        <a href="/resources/{next.slug}" class="prevnext-link">
           <span class="prevnext-label">Next →</span>
           <span class="prevnext-title">{next.title}</span>
         </a>
@@ -66,23 +66,8 @@
     font-size: 15px;
     color: var(--text-2);
     line-height: 1.65;
-    border-left: 3px solid var(--border-strong);
+    border-left: 2px solid var(--border-strong);
     padding-left: 16px;
-  }
-
-  .content-placeholder {
-    min-height: 200px;
-    border: 1px dashed var(--border-strong);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--muted-bg);
-  }
-
-  .placeholder-text {
-    font-size: 13.5px;
-    color: var(--text-4);
   }
 
   .prevnext {

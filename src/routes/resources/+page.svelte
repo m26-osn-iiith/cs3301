@@ -1,5 +1,5 @@
 <script>
-  import { resources } from '$lib/data/resources.js';
+  import { resources } from '$lib/content.js';
 </script>
 
 <svelte:head>
@@ -13,7 +13,7 @@
 
 <div class="list">
   {#each resources as r}
-    <a href="/resources/{r.id}" class="card resource-card">
+    <a href="/resources/{r.slug}" class="card resource-card">
       <div class="card-title">{r.title}</div>
       <div class="card-desc">{r.summary}</div>
     </a>

@@ -1,6 +1,6 @@
 <script>
   let { data } = $props();
-  const { assignment, prev, next } = $derived(data);
+  const { component: Content, meta, prev, next } = $derived(data);
 
   function fmtdate(d) {
     if (!d) return null;
@@ -9,35 +9,35 @@
 </script>
 
 <svelte:head>
-  <title>{assignment.title} — CS3.301</title>
+  <title>{meta.title} — CS3.301</title>
 </svelte:head>
 
 <div class="detail">
   <a href="/assignments" class="back">← Assignments</a>
 
   <div class="detail-header">
-    <span class="badge badge-milestone">Assignment {assignment.n}</span>
-    <h1 class="detail-title">{assignment.title}</h1>
+    <span class="badge badge-milestone">Assignment {meta.n}</span>
+    <h1 class="detail-title">{meta.title}</h1>
     <div class="detail-dates">
-      {#if assignment.released}
-        <span>Released: {fmtdate(assignment.released)}</span>
+      {#if meta.released}
+        <span>Released: {fmtdate(meta.released)}</span>
       {:else}
         <span class="unreleased-note">Not yet released</span>
       {/if}
-      <span>Due: {fmtdate(assignment.due)}</span>
+      <span>Due: {fmtdate(meta.due)}</span>
     </div>
   </div>
 
-  <p class="detail-summary">{assignment.summary}</p>
+  <p class="detail-summary">{meta.summary}</p>
 
-  <div class="content-placeholder">
-    <p class="placeholder-text">Assignment spec will appear here.</p>
+  <div class="prose">
+    <svelte:component this={Content} />
   </div>
 
   <nav class="prevnext">
     <div class="prev">
       {#if prev}
-        <a href="/assignments/{prev.id}" class="prevnext-link">
+        <a href="/assignments/{prev.slug}" class="prevnext-link">
           <span class="prevnext-label">← Previous</span>
           <span class="prevnext-title">{prev.title}</span>
         </a>
@@ -45,7 +45,7 @@
     </div>
     <div class="next">
       {#if next}
-        <a href="/assignments/{next.id}" class="prevnext-link">
+        <a href="/assignments/{next.slug}" class="prevnext-link">
           <span class="prevnext-label">Next →</span>
           <span class="prevnext-title">{next.title}</span>
         </a>
@@ -103,23 +103,8 @@
     font-size: 15px;
     color: var(--text-2);
     line-height: 1.65;
-    border-left: 3px solid var(--border-strong);
+    border-left: 2px solid var(--border-strong);
     padding-left: 16px;
-  }
-
-  .content-placeholder {
-    min-height: 200px;
-    border: 1px dashed var(--border-strong);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--muted-bg);
-  }
-
-  .placeholder-text {
-    font-size: 13.5px;
-    color: var(--text-4);
   }
 
   .prevnext {

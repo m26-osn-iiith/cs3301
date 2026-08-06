@@ -1,6 +1,6 @@
 <script>
   let { data } = $props();
-  const { lecture, prev, next } = $derived(data);
+  const { component: Content, meta, prev, next } = $derived(data);
 
   function fmtdate(d) {
     return new Date(d + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
@@ -8,25 +8,25 @@
 </script>
 
 <svelte:head>
-  <title>{lecture.title} — CS3.301</title>
+  <title>{meta.title} — CS3.301</title>
 </svelte:head>
 
 <div class="detail">
   <a href="/lectures" class="breadcrumb">Lectures</a>
 
-  <h1 class="title">{lecture.title}</h1>
-  <div class="meta">Lecture {lecture.n} · {fmtdate(lecture.date)}</div>
+  <h1 class="title">{meta.title}</h1>
+  <div class="meta">Lecture {meta.n} · {fmtdate(meta.date)}</div>
 
-  <p class="summary">{lecture.summary}</p>
+  <p class="summary">{meta.summary}</p>
 
-  <div class="content-area">
-    <!-- markdown content will render here -->
+  <div class="prose">
+    <svelte:component this={Content} />
   </div>
 
   <nav class="prevnext">
     <div>
       {#if prev}
-        <a href="/lectures/{prev.id}" class="prevnext-link">
+        <a href="/lectures/{prev.slug}" class="prevnext-link">
           <span class="prevnext-label">← Previous</span>
           <span class="prevnext-title">{prev.title}</span>
         </a>
@@ -34,7 +34,7 @@
     </div>
     <div>
       {#if next}
-        <a href="/lectures/{next.id}" class="prevnext-link next">
+        <a href="/lectures/{next.slug}" class="prevnext-link next">
           <span class="prevnext-label">Next →</span>
           <span class="prevnext-title">{next.title}</span>
         </a>
@@ -79,11 +79,12 @@
     font-size: 15px;
     color: var(--text-2);
     line-height: 1.65;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
+    border-left: 2px solid var(--border-strong);
+    padding-left: 16px;
   }
 
-  .content-area {
-    min-height: 80px;
+  .prose {
     margin-bottom: 44px;
   }
 
@@ -93,6 +94,7 @@
     gap: 16px;
     padding-top: 20px;
     border-top: 1px solid var(--border);
+    font-size: 14px;
   }
 
   .prevnext-link {

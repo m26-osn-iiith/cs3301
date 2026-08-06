@@ -1,5 +1,5 @@
 <script>
-  import { tutorials } from '$lib/data/tutorials.js';
+  import { tutorials } from '$lib/content.js';
 
   function fmtdate(d) {
     return new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -17,7 +17,7 @@
 
 <div class="list">
   {#each tutorials as t}
-    <a href="/tutorials/{t.id}" class="card tutorial-card">
+    <a href="/tutorials/{t.slug}" class="card tutorial-card">
       <div class="card-meta">
         <span class="badge badge-tutorial">Tutorial {t.n}</span>
         <span class="card-date">{fmtdate(t.date)}</span>

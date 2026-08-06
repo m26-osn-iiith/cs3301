@@ -1,16 +1,21 @@
-import { assignments } from '$lib/data/assignments.js';
+import { assignments } from '$lib/content.js';
 import { error } from '@sveltejs/kit';
 
+const mods = import.meta.glob('/src/content/assignments/*.md');
+
 export function entries() {
-  return assignments.map(a => ({ slug: a.id }));
+	return assignments.map((a) => ({ slug: a.slug }));
 }
 
-export function load({ params }) {
-  const idx = assignments.findIndex(a => a.id === params.slug);
-  if (idx === -1) throw error(404);
-  return {
-    assignment: assignments[idx],
-    prev: assignments[idx - 1] ?? null,
-    next: assignments[idx + 1] ?? null,
-  };
+export async function load({ params }) {
+	const path = `/src/content/assignments/${params.slug}.md`;
+	if (!mods[path]) throw error(404);
+	const idx = assignments.findIndex((a) => a.slug === params.slug);
+	const mod = await mods[path]();
+	return {
+		component: mod.default,
+		meta: assignments[idx],
+		prev: assignments[idx - 1] ?? null,
+		next: assignments[idx + 1] ?? null,
+	};
 }

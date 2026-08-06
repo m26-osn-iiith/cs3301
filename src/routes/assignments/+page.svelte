@@ -1,5 +1,5 @@
 <script>
-  import { assignments } from '$lib/data/assignments.js';
+  import { assignments } from '$lib/content.js';
 
   const today = new Date().toISOString().slice(0, 10);
 
@@ -26,7 +26,7 @@
 
 <div class="list">
   {#each assignments as a}
-    <a href="/assignments/{a.id}" class="card assign-card">
+    <a href="/assignments/{a.slug}" class="card assign-card">
       <div class="card-meta">
         <span class="badge badge-milestone">Assignment {a.n}</span>
         {#if status(a) === 'unreleased'}

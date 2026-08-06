@@ -35,6 +35,27 @@
   --deadline: #c23b3b;
   --exam: #96591c;
   --milestone: #7a4fc9;
+
+  --hljs-purple: #a626a4;
+  --hljs-green: #50a14f;
+  --hljs-gray: #a0a1a7;
+  --hljs-orange: #986801;
+  --hljs-blue: #4078f2;
+  --hljs-amber: #c18401;
+  --hljs-red: #e45649;
+  --hljs-cyan: #0184bc;
+
+  --shiki-foreground: var(--code-text);
+  --shiki-background: var(--code-bg);
+  --shiki-token-keyword: var(--hljs-purple);
+  --shiki-token-string: var(--hljs-green);
+  --shiki-token-comment: var(--hljs-gray);
+  --shiki-token-function: var(--hljs-blue);
+  --shiki-token-constant: var(--hljs-cyan);
+  --shiki-token-parameter: var(--hljs-orange);
+  --shiki-token-string-expression: var(--hljs-green);
+  --shiki-token-punctuation: var(--code-text);
+  --shiki-token-link: var(--link);
 }
 
 [data-theme="dark"] {
@@ -61,6 +82,15 @@
   --md-muted: #a39d92;
   --placeholder-1: #2b2a27;
   --placeholder-2: #343230;
+
+  --hljs-purple: #c678dd;
+  --hljs-green: #98c379;
+  --hljs-gray: #7f848e;
+  --hljs-orange: #d19a66;
+  --hljs-blue: #61afef;
+  --hljs-amber: #e5c07b;
+  --hljs-red: #e06c75;
+  --hljs-cyan: #56b6c2;
 }
 
 *,
@@ -213,53 +243,167 @@ code, pre {
   color: var(--text-2);
 }
 
-.content-area {
+.prose {
   font-size: 15px;
   line-height: 1.7;
   color: var(--md-body);
 }
 
-.content-area h2 {
+.prose h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 40px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.3;
+}
+
+.prose h3 {
   font-size: 18px;
   font-weight: 650;
   color: var(--text);
-  margin-top: 32px;
-  margin-bottom: 12px;
+  margin-top: 28px;
+  margin-bottom: 10px;
+  line-height: 1.35;
 }
 
-.content-area h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text);
+.prose h4 {
+  font-size: 14.5px;
+  font-weight: 650;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   margin-top: 24px;
   margin-bottom: 8px;
 }
 
-.content-area p {
-  margin-bottom: 16px;
+.prose p {
+  margin-bottom: 18px;
 }
 
-.content-area code {
+.prose ul,
+.prose ol {
+  margin-bottom: 18px;
+  padding-left: 24px;
+}
+
+.prose li {
+  margin-bottom: 6px;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--border-strong);
+  color: var(--md-muted);
+  font-style: italic;
+  padding-left: 16px;
+  margin: 20px 0;
+}
+
+.prose blockquote p {
+  margin-bottom: 0;
+}
+
+.prose a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline);
+}
+
+.prose a:hover {
+  color: var(--link-hover);
+}
+
+.prose code {
   background: var(--inline-code-bg);
   color: var(--inline-code-text);
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 0.87em;
+  font-family: var(--font-mono);
 }
 
-.content-area pre {
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  color: var(--code-text);
-  padding: 16px;
-  border-radius: 8px;
-  overflow-x: auto;
-  margin-bottom: 16px;
+.prose pre {
+  margin-bottom: 20px;
 }
 
-.content-area pre code {
+.prose pre code {
   background: none;
   color: inherit;
   padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.prose th {
+  text-align: left;
+  font-weight: 650;
+  font-size: 13px;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--border-strong);
+  padding: 6px 12px 6px 0;
+}
+
+.prose td {
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--md-body);
+  vertical-align: top;
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose :is(h2, h3, h4) + * {
+  margin-top: 0;
+}
+
+/* Shiki code blocks */
+:global(.shiki) {
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
   font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+}
+
+:global(.shiki code) {
+  font-family: var(--font-mono);
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+  color: inherit !important;
+}
+
+:global(.shiki .line) {
+  display: block;
+  min-height: 1em;
 }
