@@ -6,6 +6,7 @@
   import Sun from 'lucide-svelte/icons/sun';
   import Moon from 'lucide-svelte/icons/moon';
   import { course } from '$lib/data/course.js';
+  import { lectures, tutorials, assignments, resources } from '$lib/content.js';
 
   let { onclose = () => {} } = $props();
 
@@ -14,36 +15,19 @@
     { type: 'item', label: 'Calendar', href: '/calendar' },
     { type: 'spacer' },
     {
-      type: 'group', label: 'Lectures', href: '/lectures', items: [
-        { label: '1. Introduction to OS & Networks', href: '/lectures/intro-os-networks' },
-        { label: '2. Processes, Threads & Concurrency', href: '/lectures/processes-threads' },
-        { label: '3. CPU Scheduling', href: '/lectures/cpu-scheduling' },
-        { label: '4. Networking Fundamentals', href: '/lectures/networking-fundamentals' },
-      ]
+      type: 'group', label: 'Lectures', href: '/lectures', items: lectures.map(l => ({ label: l.title, href: `/lectures/${l.slug}` }))
     },
     {
-      type: 'group', label: 'Assignments', href: '/assignments', items: [
-        { label: '1. Shell Implementation', href: '/assignments/shell' },
-        { label: '2. Producer–Consumer', href: '/assignments/producer-consumer' },
-        { label: '3. TCP Chat Server', href: '/assignments/chat-server' },
-      ]
+      type: 'group', label: 'Assignments', href: '/assignments', items: assignments.map(a => ({ label: a.title, href: `/assignments/${a.slug}` }))
     },
     {
-      type: 'group', label: 'Tutorials', href: '/tutorials', items: [
-        { label: '1. Dev Environment Setup', href: '/tutorials/dev-environment' },
-        { label: '2. pthreads & Synchronization', href: '/tutorials/pthreads' },
-        { label: '3. Socket Programming Basics', href: '/tutorials/sockets' },
-      ]
+      type: 'group', label: 'Tutorials', href: '/tutorials', items: tutorials.map(t => ({ label: t.title, href: `/tutorials/${t.slug}` }))
     },
     { type: 'spacer' },
     { type: 'item', label: 'Course Project', href: '/project' },
     { type: 'spacer' },
     {
-      type: 'group', label: 'Resources', href: '/resources', items: [
-        { label: 'Textbooks & Readings', href: '/resources/textbooks' },
-        { label: 'Reference Docs & Man Pages', href: '/resources/reference' },
-        { label: 'Tools & Setup', href: '/resources/tools' },
-      ]
+      type: 'group', label: 'Resources', href: '/resources', items: resources.map(r => ({ label: r.title, href: `/resources/${r.slug}` }))
     },
     { type: 'item', label: 'Course Policy', href: '/policy' },
     { type: 'item', label: 'Staff', href: '/staff' },
@@ -119,15 +103,17 @@
       </a>
       <div
         class="group-items"
-        style="max-height:{open ? entry.items.length * 36 + 6 : 0}px;opacity:{open ? 1 : 0};margin-top:{open ? 2 : 0}px"
+        class:open
       >
-        {#each entry.items as item}
-          <a
-            href={item.href}
-            class="nav-item nav-subitem {isactive(item.href) ? 'active' : ''}"
-            onclick={onclose}
-          >{item.label}</a>
-        {/each}
+        <div class="group-items-inner">
+          {#each entry.items as item (item.href)}
+            <a
+              href={item.href}
+              class="nav-item nav-subitem {isactive(item.href) ? 'active' : ''}"
+              onclick={onclose}
+            >{item.label}</a>
+          {/each}
+        </div>
       </div>
     {/if}
   {/each}
@@ -181,6 +167,7 @@
 
   .nav-item {
     display: block;
+    width: auto;
     padding: 8px 10px;
     border-radius: 7px;
     font-size: 14px;
@@ -220,16 +207,31 @@
   }
 
   .group-items {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-top: 0;
+    transition: grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, margin-top 0.28s ease;
+  }
+
+  .group-items.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 2px;
+  }
+
+  .group-items-inner {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 2px;
-    overflow: hidden;
-    transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, margin-top 0.28s ease;
+    padding-bottom: 3px;
   }
 
   .nav-subitem {
-    padding: 7px 10px;
-    margin-left: 16px;
+    padding: 8px 10px;
+    margin-left: 14px;
+    margin-right: 2px;
     font-size: 13.5px;
   }
 

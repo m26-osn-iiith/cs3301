@@ -1,4 +1,8 @@
 <script>
+  import ChevronLeft from 'lucide-svelte/icons/chevron-left';
+  import ChevronRight from 'lucide-svelte/icons/chevron-right';
+  import Prose from '$lib/prose.svelte';
+
   let { data } = $props();
   const { component: Content, meta, prev, next } = $derived(data);
 
@@ -19,15 +23,15 @@
 
   <p class="summary">{meta.summary}</p>
 
-  <div class="prose">
+  <Prose>
     <svelte:component this={Content} />
-  </div>
+  </Prose>
 
   <nav class="prevnext">
     <div>
       {#if prev}
         <a href="/lectures/{prev.slug}" class="prevnext-link">
-          <span class="prevnext-label">← Previous</span>
+          <span class="prevnext-label"><ChevronLeft size={13} strokeWidth={2} />Previous</span>
           <span class="prevnext-title">{prev.title}</span>
         </a>
       {/if}
@@ -35,7 +39,7 @@
     <div>
       {#if next}
         <a href="/lectures/{next.slug}" class="prevnext-link next">
-          <span class="prevnext-label">Next →</span>
+          <span class="prevnext-label">Next<ChevronRight size={13} strokeWidth={2} /></span>
           <span class="prevnext-title">{next.title}</span>
         </a>
       {/if}
@@ -84,14 +88,11 @@
     padding-left: 16px;
   }
 
-  .prose {
-    margin-bottom: 44px;
-  }
-
   .prevnext {
     display: flex;
     justify-content: space-between;
     gap: 16px;
+    margin-top: 44px;
     padding-top: 20px;
     border-top: 1px solid var(--border);
     font-size: 14px;
@@ -100,7 +101,7 @@
   .prevnext-link {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     text-decoration: none;
   }
 
@@ -109,8 +110,15 @@
   }
 
   .prevnext-label {
+    display: flex;
+    align-items: center;
+    gap: 2px;
     font-size: 12px;
     color: var(--text-3);
+  }
+
+  .prevnext-link.next .prevnext-label {
+    justify-content: flex-end;
   }
 
   .prevnext-title {

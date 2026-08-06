@@ -197,31 +197,11 @@ code, pre {
   white-space: nowrap;
 }
 
-.badge-lecture {
-  color: #2f5fd6;
-  background: #2f5fd61a;
-}
-
-.badge-tutorial {
-  color: #0d8f6e;
-  background: #0d8f6e1a;
-}
-
-.badge-deadline {
-  color: #c23b3b;
-  background: #c23b3b1a;
-}
-
-.badge-exam {
-  color: #96591c;
-  background: #96591c1a;
-}
-
-.badge-milestone {
-  color: #7a4fc9;
-  background: #7a4fc91a;
-}
-
+.badge-lecture,
+.badge-tutorial,
+.badge-deadline,
+.badge-exam,
+.badge-milestone,
 .badge-holiday {
   color: var(--text-3);
   background: var(--hover-bg);
@@ -383,18 +363,45 @@ code, pre {
 }
 
 /* Shiki code blocks */
-:global(.shiki) {
+.code-block {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.shiki {
   border: 1px solid var(--code-border);
   border-radius: 8px;
   padding: 16px;
   overflow-x: auto;
   font-size: 13.5px;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   font-family: var(--font-mono);
 }
 
-:global(.shiki code) {
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: var(--text-3);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: background 0.12s, color 0.12s;
+  line-height: 1.5;
+}
+
+.copy-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text);
+}
+
+.shiki code {
   font-family: var(--font-mono);
   background: none !important;
   padding: 0 !important;
@@ -403,7 +410,3 @@ code, pre {
   color: inherit !important;
 }
 
-:global(.shiki .line) {
-  display: block;
-  min-height: 1em;
-}

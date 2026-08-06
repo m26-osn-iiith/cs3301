@@ -1,4 +1,8 @@
 <script>
+  import ChevronLeft from 'lucide-svelte/icons/chevron-left';
+  import ChevronRight from 'lucide-svelte/icons/chevron-right';
+  import Prose from '$lib/prose.svelte';
+
   let { data } = $props();
   const { component: Content, meta, prev, next } = $derived(data);
 </script>
@@ -8,31 +12,29 @@
 </svelte:head>
 
 <div class="detail">
-  <a href="/resources" class="back">← Resources</a>
+  <a href="/resources" class="breadcrumb">Resources</a>
 
-  <div class="detail-header">
-    <h1 class="detail-title">{meta.title}</h1>
-  </div>
+  <h1 class="title">{meta.title}</h1>
 
-  <p class="detail-summary">{meta.summary}</p>
+  <p class="summary">{meta.summary}</p>
 
-  <div class="prose">
+  <Prose>
     <svelte:component this={Content} />
-  </div>
+  </Prose>
 
   <nav class="prevnext">
-    <div class="prev">
+    <div>
       {#if prev}
         <a href="/resources/{prev.slug}" class="prevnext-link">
-          <span class="prevnext-label">← Previous</span>
+          <span class="prevnext-label"><ChevronLeft size={13} strokeWidth={2} />Previous</span>
           <span class="prevnext-title">{prev.title}</span>
         </a>
       {/if}
     </div>
-    <div class="next">
+    <div>
       {#if next}
-        <a href="/resources/{next.slug}" class="prevnext-link">
-          <span class="prevnext-label">Next →</span>
+        <a href="/resources/{next.slug}" class="prevnext-link next">
+          <span class="prevnext-label">Next<ChevronRight size={13} strokeWidth={2} /></span>
           <span class="prevnext-title">{next.title}</span>
         </a>
       {/if}
@@ -44,28 +46,33 @@
   .detail {
     display: flex;
     flex-direction: column;
-    gap: 24px;
   }
 
-  .back {
+  .breadcrumb {
     font-size: 13.5px;
-    color: var(--text-3);
+    color: var(--link);
     text-decoration: none;
+    display: inline-block;
+    margin-bottom: 16px;
   }
 
-  .back:hover { color: var(--text); }
+  .breadcrumb:hover {
+    color: var(--link-hover);
+  }
 
-  .detail-title {
-    font-size: 26px;
+  .title {
+    font-size: 30px;
     font-weight: 700;
     color: var(--text);
-    line-height: 1.25;
+    line-height: 1.2;
+    margin-bottom: 24px;
   }
 
-  .detail-summary {
+  .summary {
     font-size: 15px;
     color: var(--text-2);
     line-height: 1.65;
+    margin-bottom: 36px;
     border-left: 2px solid var(--border-strong);
     padding-left: 16px;
   }
@@ -74,24 +81,33 @@
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding-top: 24px;
+    margin-top: 44px;
+    padding-top: 20px;
     border-top: 1px solid var(--border);
+    font-size: 14px;
   }
-
-  .prev { text-align: left; }
-  .next { text-align: right; }
 
   .prevnext-link {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     text-decoration: none;
   }
 
+  .prevnext-link.next {
+    text-align: right;
+  }
+
   .prevnext-label {
+    display: flex;
+    align-items: center;
+    gap: 2px;
     font-size: 12px;
     color: var(--text-3);
-    font-weight: 500;
+  }
+
+  .prevnext-link.next .prevnext-label {
+    justify-content: flex-end;
   }
 
   .prevnext-title {
