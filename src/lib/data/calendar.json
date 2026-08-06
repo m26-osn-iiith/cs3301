@@ -1,0 +1,20 @@
+[
+  { "date": "2026-08-24", "title": "Lecture 1: Introduction to OS & Networks", "type": "lecture", "route": "/lectures/intro-os-networks" },
+  { "date": "2026-08-26", "title": "Tutorial 1: Dev Environment Setup", "type": "tutorial", "route": "/tutorials/dev-environment" },
+  { "date": "2026-08-31", "title": "Lecture 2: Processes, Threads & Concurrency", "type": "lecture", "route": "/lectures/processes-threads" },
+  { "date": "2026-09-04", "title": "Assignment 1 released: Shell Implementation", "type": "milestone", "route": "/assignments/shell" },
+  { "date": "2026-09-07", "title": "Labor Day — No Class", "type": "holiday", "route": null },
+  { "date": "2026-09-14", "title": "Lecture 3: CPU Scheduling", "type": "lecture", "route": "/lectures/cpu-scheduling" },
+  { "date": "2026-09-16", "title": "Tutorial 2: pthreads & Synchronization", "type": "tutorial", "route": "/tutorials/pthreads" },
+  { "date": "2026-09-18", "title": "Assignment 1 due: Shell Implementation", "type": "deadline", "route": "/assignments/shell" },
+  { "date": "2026-09-21", "title": "Lecture 4: Networking Fundamentals", "type": "lecture", "route": "/lectures/networking-fundamentals" },
+  { "date": "2026-09-28", "title": "Assignment 2 released: Producer–Consumer", "type": "milestone", "route": "/assignments/producer-consumer" },
+  { "date": "2026-10-02", "title": "Tutorial 3: Socket Programming Basics", "type": "tutorial", "route": "/tutorials/sockets" },
+  { "date": "2026-10-09", "title": "Midterm Exam", "type": "exam", "route": null },
+  { "date": "2026-10-16", "title": "Assignment 2 due: Producer–Consumer", "type": "deadline", "route": "/assignments/producer-consumer" },
+  { "date": "2026-10-23", "title": "Course Project proposal due", "type": "deadline", "route": "/project" },
+  { "date": "2026-11-06", "title": "Assignment 3 due: TCP Chat Server", "type": "deadline", "route": "/assignments/chat-server" },
+  { "date": "2026-11-26", "title": "Thanksgiving Break — No Class", "type": "holiday", "route": null },
+  { "date": "2026-12-04", "title": "Course Project final submission due", "type": "deadline", "route": "/project" },
+  { "date": "2026-12-08", "title": "Final Project Presentations", "type": "exam", "route": "/project" }
+]

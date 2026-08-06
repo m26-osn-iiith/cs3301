@@ -1,5 +1,5 @@
 <script>
-  import { staff } from '$lib/data/staff.js';
+  import staff from '$lib/data/staff.json';
 </script>
 
 <svelte:head>

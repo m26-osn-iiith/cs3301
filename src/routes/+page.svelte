@@ -1,6 +1,6 @@
 <script>
-  import { course } from '$lib/data/course.js';
-  import { events } from '$lib/data/calendar.js';
+  import course from '$lib/data/course.json';
+  import events from '$lib/data/calendar.json';
 
   const today = new Date().toISOString().slice(0, 10);
   const upcoming = events.filter(e => e.date >= today && e.type !== 'holiday').slice(0, 3);

@@ -1,5 +1,5 @@
 <script>
-  import { events } from '$lib/data/calendar.js';
+  import events from '$lib/data/calendar.json';
 
   const typelabel = { lecture: 'Lecture', tutorial: 'Tutorial', deadline: 'Deadline', exam: 'Exam', milestone: 'Milestone', holiday: 'Holiday' };
 

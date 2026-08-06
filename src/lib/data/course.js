@@ -1,6 +1,0 @@
-export const course = {
-  code: 'CS3.301',
-  name: 'Operating Systems and Networks',
-  term: 'Fall 2026',
-  tagline: 'How computers actually run programs, and how those programs talk to each other.',
-};

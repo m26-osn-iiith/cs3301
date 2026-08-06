@@ -6,7 +6,7 @@
   import Sun from 'lucide-svelte/icons/sun';
   import Moon from 'lucide-svelte/icons/moon';
   import Github from '@tabler/icons-svelte/icons/brand-github';
-  import { course } from '$lib/data/course.js';
+  import course from '$lib/data/course.json';
   import { lectures, tutorials, assignments, resources } from '$lib/content.js';
 
   let { onclose = () => {} } = $props();

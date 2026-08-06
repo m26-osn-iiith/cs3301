@@ -5,7 +5,7 @@
   import favicon from '$lib/assets/favicon.svg';
   import Menu from 'lucide-svelte/icons/menu';
   import X from 'lucide-svelte/icons/x';
-  import { course } from '$lib/data/course.js';
+  import course from '$lib/data/course.json';
 
   let { children } = $props();
   let draweropen = $state(false);
