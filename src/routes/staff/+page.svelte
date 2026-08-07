@@ -14,7 +14,11 @@
 <div class="staff-grid">
   {#each staff as s}
     <div class="card staff-card">
-      <div class="avatar"></div>
+      {#if s.image}
+        <img src={s.image} alt={s.name} class="avatar photo" />
+      {:else}
+        <div class="avatar"></div>
+      {/if}
       <div class="staff-info">
         <div class="staff-name">{s.name}</div>
         <div class="staff-role">{s.role}</div>
@@ -54,6 +58,11 @@
   .avatar {
     width: 100%;
     aspect-ratio: 4 / 3;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .avatar:not(.photo) {
     background: repeating-linear-gradient(
       45deg,
       var(--placeholder-1) 0,
@@ -61,7 +70,11 @@
       var(--placeholder-2) 6px,
       var(--placeholder-2) 12px
     );
-    flex-shrink: 0;
+  }
+
+  .photo {
+    object-fit: cover;
+    object-position: center top;
   }
 
   .staff-info {
