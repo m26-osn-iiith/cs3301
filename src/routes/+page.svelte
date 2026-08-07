@@ -2,7 +2,7 @@
   import course from '$lib/data/course.json';
   import events from '$lib/data/calendar.json';
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
   const upcoming = events.filter(e => e.date >= today && e.type !== 'holiday').slice(0, 3);
 
   const sections = [
@@ -10,6 +10,7 @@
     { label: 'Lectures', href: '/lectures', desc: 'Slides & readings' },
     { label: 'Mini-Projects', href: '/assignments', desc: 'Hands-on projects' },
     { label: 'Tutorials', href: '/tutorials', desc: 'Walkthroughs & setup' },
+    { label: 'Homework', href: '/homework', desc: 'Weekly problem sets' },
     { label: 'Course Project', href: '/project', desc: 'TBA' },
     { label: 'Resources', href: '/resources', desc: 'Texts, docs & tools' },
     { label: 'Course Policy', href: '/policy', desc: 'Grading & rules' },

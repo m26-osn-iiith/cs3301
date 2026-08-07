@@ -1,7 +1,8 @@
 [
   { "date": "2026-07-31", "title": "Lecture 1", "type": "lecture", "route": "/lectures/01" },
   { "date": "2026-08-04", "title": "Lecture 2", "type": "lecture", "route": "/lectures/02" },
-  { "date": "2026-08-07", "title": "Lecture 3", "type": "lecture", "route": null },
+  { "date": "2026-08-07", "title": "Lecture 3", "type": "lecture", "route": "/lectures/03" },
+  { "date": "2026-08-08", "title": "Tutorial 1", "type": "tutorial", "route": "/tutorials/01" },
   { "date": "2026-08-11", "title": "Lecture 4", "type": "lecture", "route": null },
   { "date": "2026-08-14", "title": "Lecture 5", "type": "lecture", "route": null },
   { "date": "2026-08-18", "title": "Lecture 6", "type": "lecture", "route": null },
