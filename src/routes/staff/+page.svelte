@@ -1,5 +1,8 @@
 <script>
   import staff from '$lib/data/staff.json';
+  import Mail from 'lucide-svelte/icons/mail';
+  import Clock from 'lucide-svelte/icons/clock';
+  import MapPin from 'lucide-svelte/icons/map-pin';
 </script>
 
 <svelte:head>
@@ -25,13 +28,25 @@
         {#if s.bio}
           <p class="staff-bio">{s.bio}</p>
         {/if}
-        {#if s.email || s.hours}
+        {#if s.email || s.time || s.location}
           <div class="staff-details">
             {#if s.email}
-              <a href="mailto:{s.email}" class="staff-email">{s.email}</a>
+              <a href="mailto:{s.email}" class="staff-detail-row staff-email">
+                <Mail size={11} strokeWidth={2} class="detail-icon" />
+                <span class="detail-text">{s.email}</span>
+              </a>
             {/if}
-            {#if s.hours}
-              <div class="staff-hours">{s.hours}</div>
+            {#if s.time}
+              <div class="staff-detail-row">
+                <Clock size={11} strokeWidth={2} class="detail-icon" />
+                <span class="detail-text">{s.time}</span>
+              </div>
+            {/if}
+            {#if s.location}
+              <div class="staff-detail-row">
+                <MapPin size={11} strokeWidth={2} class="detail-icon" />
+                <span class="detail-text">{s.location}</span>
+              </div>
             {/if}
           </div>
         {/if}
@@ -82,6 +97,7 @@
     flex-direction: column;
     gap: 6px;
     padding: 14px 16px 16px;
+    min-width: 0;
   }
 
   .staff-name {
@@ -109,23 +125,36 @@
   .staff-details {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     margin-top: 2px;
   }
 
-  .staff-email {
-    font-size: 12.5px;
-    color: var(--link);
+  .staff-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-3);
+    font-size: 12px;
     text-decoration: none;
+    min-width: 0;
+  }
+
+  .staff-email {
+    color: var(--link);
   }
 
   .staff-email:hover {
     color: var(--link-hover);
   }
 
-  .staff-hours {
-    font-size: 12px;
-    color: var(--text-3);
-    font-family: var(--font-mono);
+  .detail-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  :global(.detail-icon) {
+    flex-shrink: 0;
   }
 </style>
