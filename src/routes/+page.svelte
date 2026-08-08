@@ -10,7 +10,7 @@
     { label: 'Lectures', href: '/lectures', desc: 'Slides & readings' },
     { label: 'Mini-Projects', href: '/assignments', desc: 'Hands-on projects' },
     { label: 'Tutorials', href: '/tutorials', desc: 'Walkthroughs & setup' },
-    { label: 'Homework', href: '/homework', desc: 'Weekly problem sets' },
+    { label: 'Homework', href: '/homework', desc: 'Reading assignments' },
     { label: 'Course Project', href: '/project', desc: 'TBA' },
     { label: 'Resources', href: '/resources', desc: 'Texts, docs & tools' },
     { label: 'Course Policy', href: '/policy', desc: 'Grading & rules' },
