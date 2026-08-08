@@ -7,7 +7,7 @@
   import Moon from 'lucide-svelte/icons/moon';
   import Github from '@tabler/icons-svelte/icons/brand-github';
   import course from '$lib/data/course.json';
-  import { lectures, tutorials, assignments, resources } from '$lib/content.js';
+  import { lectures, tutorials, assignments, resources, homework } from '$lib/content.js';
 
   let { onclose = () => {} } = $props();
 
@@ -23,6 +23,9 @@
     },
     {
       type: 'group', label: 'Tutorials', href: '/tutorials', items: tutorials.map(t => ({ label: t.title, href: `/tutorials/${t.slug}` }))
+    },
+    {
+      type: 'group', label: 'Homework', href: '/homework', items: homework.map(hw => ({ label: hw.title, href: `/homework/${hw.slug}` }))
     },
     { type: 'spacer' },
     { type: 'item', label: 'Course Project', href: '/project' },

@@ -2,6 +2,7 @@ const lecturemod = import.meta.glob('/src/content/lectures/*.md', { eager: true 
 const tutorialmod = import.meta.glob('/src/content/tutorials/*.md', { eager: true });
 const assignmod = import.meta.glob('/src/content/assignments/*.md', { eager: true });
 const resourcemod = import.meta.glob('/src/content/resources/*.md', { eager: true });
+const homeworkmod = import.meta.glob('/src/content/homework/*.md', { eager: true });
 
 function collect(modules, sortkey = 'slug') {
 	return Object.entries(modules)
@@ -16,3 +17,4 @@ export const lectures = collect(lecturemod);
 export const tutorials = collect(tutorialmod);
 export const assignments = collect(assignmod);
 export const resources = collect(resourcemod, 'order');
+export const homework = collect(homeworkmod);

@@ -1,0 +1,13 @@
+Part 1
+
+1a:
+- fork() calls allocproc() to find a free slot
+- finds none, so returns 0
+- fork() returns -1 to caller
+
+1b:
+- exit() sets process state to ZOMBIE
+- sends *its* children to init
+- wakes up parent
+- if no wait, then cooked
+- ZOMBIE forever
