@@ -23,6 +23,17 @@
   <div class="meta">
     HW {meta.n}
     {#if meta.date} · {fmtdate(meta.date)}{/if}
+    {#if meta.authors?.length}
+      {' · '}
+      {#each meta.authors as author, i}
+        {#if i > 0}{', '}{/if}
+        {#if author.matrix}
+          <a href="https://matrix.to/#/{author.matrix}" class="author" target="_blank" rel="noopener noreferrer">{author.name}</a>
+        {:else}
+          {author.name}
+        {/if}
+      {/each}
+    {/if}
   </div>
 
   {#if meta.summary}
@@ -83,6 +94,15 @@
     font-size: 13.5px;
     color: var(--text-3);
     margin-bottom: 20px;
+  }
+
+  .author {
+    color: var(--text-3);
+    text-decoration: none;
+  }
+
+  .author:hover {
+    color: var(--link);
   }
 
   .summary {
