@@ -20,9 +20,11 @@ The [xv6 book](https://pdos.csail.mit.edu/6.828/2025/xv6/book-riscv-rev5.pdf) pr
 
 ### Linux
 
-The only prerequisites for installing xv6 are `qemu` and `gdb`.
+The only prerequisites for installing xv6 are `qemu`, `gdb` and the RISC-V GNU toolchain.
 
 More specifically, `qemu-system` and not `qemu-user` (which is what you most likely have installed from CSO last semester). This is because you're emulating an entire machine instead of just a single program. It can be installed from your distro's package manager.
+
+You also need a RISC-V cross compiler toolchain (`riscv64-linux-gnu-gcc` or similar), along with `make` and standard build tools. Check your package manager for a `riscv64-*-toolchain` or `riscv64-linux-gnu-gcc` package.
 
 You will need a `gdb` that supports RISC-V architecture. On Arch Linux, it does out of the box, but for other distros, you might need to install `gdb-multiarch`. `riscv64-linux-gnu-gdb` works too. Can be installed from your distro's package manager.
 
@@ -154,3 +156,28 @@ To switch to a thread (in the sample output, we are on thread 3), say 2, run:
 ```gdb
 thread 2
 ```
+
+## Tips
+
+### Cleaning the build
+
+If you switch branches, change Makefile variables like `CPUS`, or run into weird build errors, run:
+
+```bash
+make clean
+```
+
+This removes all compiled files and the kernel image, so the next `make` starts fresh.
+
+### `clangd` support with compile_commands.json
+
+xv6 uses a custom Makefile, so tools like `clangd` cannot parse the code properly out of the box. You can fix this with `bear`, which records every compiler call during a build and writes them into a `compile_commands.json` file.
+
+Install `bear` from your package manager, then run:
+
+```bash
+make clean
+bear -- make qemu
+```
+
+This gives you a `compile_commands.json` file in the project root. Point your editor's clangd setup at this file and you get proper autocomplete and go to definition.
