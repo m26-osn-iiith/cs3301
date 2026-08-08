@@ -16,6 +16,52 @@ const hl = await createHighlighter({
 
 const langmap = { sh: 'bash', shell: 'bash', js: 'javascript', ts: 'typescript', py: 'python' };
 
+const RESOURCE_ICONS = {
+	slides:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+	code:      `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+	recording: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`,
+	notes:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+};
+
+const RESOURCE_KEYWORDS = {
+	'Slides': 'slides',
+	'Code': 'code',
+	'Recording': 'recording',
+	'Notes': 'notes',
+};
+
+function remarkResourceLinks() {
+	function makeHTML(href, keyword, subtitle) {
+		const type = RESOURCE_KEYWORDS[keyword];
+		const icon = RESOURCE_ICONS[type];
+		const sub = subtitle ? `<span class="resource-sub">${subtitle}</span>` : '';
+		return `<a class="resource-tile" href="${href}"><span class="resource-icon">${icon}</span><span class="resource-label">${keyword}</span>${sub}</a>`;
+	}
+
+	function walk(node) {
+		if (!node.children) return;
+		for (let i = 0; i < node.children.length; i++) {
+			const child = node.children[i];
+			if (child.type === 'paragraph') {
+				const real = child.children?.filter(n => !(n.type === 'text' && !n.value.trim()));
+				if (real?.length === 1 && real[0].type === 'link') {
+					const link = real[0];
+					const text = link.children?.map(c => c.value || '').join('') || '';
+					const keyword = Object.keys(RESOURCE_KEYWORDS).find(k => text.startsWith(k));
+					if (keyword) {
+						const subtitle = text.slice(keyword.length).replace(/^[\s\-–—·]+/, '').trim();
+						node.children[i] = { type: 'html', value: makeHTML(link.url, keyword, subtitle) };
+						continue;
+					}
+				}
+			}
+			walk(child);
+		}
+	}
+
+	return (tree) => walk(tree);
+}
+
 /** @param {string} code @param {string|undefined} lang */
 function highlighter(code, lang) {
 	const l = langmap[lang] || lang || 'text';
@@ -32,6 +78,7 @@ export default {
 		mdsvex({
 			extensions: ['.md'],
 			highlight: { highlighter },
+			remarkPlugins: [remarkResourceLinks],
 		}),
 	],
 	kit: {
