@@ -1,0 +1,134 @@
+diff --git a/kernel/defs.h b/kernel/defs.h
+index 09a6d91..5b49181 100644
+--- a/kernel/defs.h
++++ b/kernel/defs.h
+@@ -102,6 +102,7 @@ void            yield(void);
+ int             either_copyout(int user_dst, uint64 dst, void *src, uint64 len);
+ int             either_copyin(void *dst, int user_src, uint64 src, uint64 len);
+ void            procdump(void);
++int             headcount(struct proc*);
+ 
+ // swtch.S
+ void            swtch(struct context*, struct context*);
+diff --git a/kernel/proc.c b/kernel/proc.c
+index aa792ba..a806a17 100644
+--- a/kernel/proc.c
++++ b/kernel/proc.c
+@@ -658,6 +658,21 @@ either_copyin(void *dst, int user_src, uint64 src, uint64 len)
+   }
+ }
+ 
++int
++headcount(struct proc *parent)
++{
++  struct proc *p;
++  int n = 0;
++
++  for(p = proc; p < &proc[NPROC]; p++){
++    acquire(&p->lock);
++    if(p->parent == parent && p->state != UNUSED && p->state != ZOMBIE)
++      n++;
++    release(&p->lock);
++  }
++  return n;
++}
++
+ // Print a process listing to console.  For debugging.
+ // Runs when user types ^P on console.
+ // No lock to avoid wedging a stuck machine further.
+diff --git a/kernel/syscall.c b/kernel/syscall.c
+index 7fc48f5..9ccfaa3 100644
+--- a/kernel/syscall.c
++++ b/kernel/syscall.c
+@@ -103,6 +103,7 @@ extern uint64 sys_link(void);
+ extern uint64 sys_mkdir(void);
+ extern uint64 sys_close(void);
+ extern uint64 sys_sync(void);
++extern uint64 sys_headcount(void);
+ 
+ // An array mapping syscall numbers from syscall.h
+ // to the function that handles the system call.
+@@ -130,6 +131,7 @@ static uint64 (*syscalls[])(void) = {
+   [SYS_mkdir]   sys_mkdir,
+   [SYS_close]   sys_close,
+   [SYS_sync]    sys_sync,
++  [SYS_headcount] sys_headcount,
+   // clang-format on
+ };
+ 
+diff --git a/kernel/syscall.h b/kernel/syscall.h
+index 5a4a39f..4674b80 100644
+--- a/kernel/syscall.h
++++ b/kernel/syscall.h
+@@ -21,3 +21,4 @@
+ #define SYS_mkdir  20
+ #define SYS_close  21
+ #define SYS_sync   22
++#define SYS_headcount 23
+diff --git a/kernel/sysproc.c b/kernel/sysproc.c
+index 73ff1f3..2306c70 100644
+--- a/kernel/sysproc.c
++++ b/kernel/sysproc.c
+@@ -95,6 +95,12 @@ sys_kill(void)
+   return kkill(pid);
+ }
+ 
++uint64
++sys_headcount(void)
++{
++  return headcount(myproc());
++}
++
+ // return how many clock tick interrupts have occurred
+ // since start.
+ uint64
+diff --git a/user/user.h b/user/user.h
+index 29aad59..7cf1b99 100644
+--- a/user/user.h
++++ b/user/user.h
+@@ -25,6 +25,7 @@ char *sys_sbrk(int, int);
+ int pause(int);
+ int uptime(void);
+ int sync(void);
++int headcount(void);
+ 
+ // ulib.c
+ int stat(const char *, struct stat *);
+diff --git a/user/usys.pl b/user/usys.pl
+index 4d054e8..973ae5b 100755
+--- a/user/usys.pl
++++ b/user/usys.pl
+@@ -43,3 +43,4 @@ entry("sbrk");
+ entry("pause");
+ entry("uptime");
+ entry("sync");
++entry("headcount");
+diff --git a/user/testheadcount.c b/user/testheadcount.c
+new file mode 100644
+index 0000000..cfa1017
+--- /dev/null
++++ b/user/testheadcount.c
+@@ -0,0 +1,23 @@
++#include "kernel/types.h"
++#include "kernel/stat.h"
++#include "user/user.h"
++
++int
++main(int argc, char *argv[])
++{
++  int i;
++
++  for(i = 0; i < 3; i++){
++    if(fork() == 0){
++      pause(5);
++      exit(0);
++    }
++  }
++
++  printf("children: %d\n", headcount());
++
++  for(i = 0; i < 3; i++)
++    wait(0);
++
++  exit(0);
++}
