@@ -5,7 +5,7 @@
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import Sun from 'lucide-svelte/icons/sun';
   import Moon from 'lucide-svelte/icons/moon';
-  import Github from '@tabler/icons-svelte/icons/brand-github';
+  import Forms from '@tabler/icons-svelte/icons/message';
   import course from '$lib/data/course.json';
   import { lectures, tutorials, assignments, resources, homework } from '$lib/content.js';
 
@@ -124,9 +124,6 @@
 </nav>
 
 <div class="footer">
-  <a href="https://github.com/m26-osn-iiith/cs3301" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
-    <Github size={16} strokeWidth={2} />
-  </a>
   <button class="icon-btn" onclick={toggletheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
     {#if theme === 'dark'}
       <Sun size={16} strokeWidth={2} />
@@ -134,6 +131,9 @@
       <Moon size={16} strokeWidth={2} />
     {/if}
   </button>
+  <a href="https://forms.cloud.microsoft/r/wPh7YEGdz5" target="_blank" rel="noopener" class="icon-btn" aria-label="Feedback Form">
+    <Forms size={16} />
+  </a>
 </div>
 
 <style>
