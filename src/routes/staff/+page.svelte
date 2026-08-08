@@ -57,7 +57,7 @@
 
   .avatar {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 3;
     flex-shrink: 0;
     display: block;
   }
@@ -74,7 +74,7 @@
 
   .photo {
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
   }
 
   .staff-info {
