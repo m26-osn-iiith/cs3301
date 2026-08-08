@@ -5,7 +5,8 @@
     "image": "/staff/deepak-gangadharan.png",
     "bio": "Assistant Professor at IIIT Hyderabad. Part of Computer Systems Group.",
     "email": "deepak.g@iiit.ac.in",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Gautam Bhetanabhotla",
@@ -13,15 +14,17 @@
     "image": "/staff/gautam.jpg",
     "bio": "she operating on my system till i network",
     "email": "gautam.bhetanabhotla@students.iiit.ac.in",
-    "hours": "5-6 PM on Tuesdays @ Kassi workspace"
+    "time": "5–6PM on Tuesdays",
+    "location": "Kassi Workspace"
   },
   {
     "name": "Advait Dintakurti",
     "role": "Teaching Assistant",
     "image": "/staff/advait.png",
-    "bio": "I love Operating Systems and Networks.",
+    "bio": "she networks on my system til i operate",
     "email": "advait.dintakurti@research.iiit.ac.in",
-    "hours": "Fridays 2:30PM - 3:30PM @ MTNLP"
+    "time": "2:30–3:30PM on Fridays",
+    "location": "MTNLP"
   },
   {
     "name": "Tatva Agarwal",
@@ -29,7 +32,8 @@
     "image": "/staff/tatva.jpg",
     "bio": "An AI Prompt Stack ≠ Operating System",
     "email": "tatva.agarwal@research.iiit.ac.in",
-    "hours": "Friday 12 - 1PM @ LSI, 4th Floor THub (Himalaya D-Block)"
+    "time": "12–1PM on Fridays",
+    "location": "LSI, THub 4th Floor"
   },
   {
     "name": "Veena Ramadas",
@@ -37,7 +41,8 @@
     "image": "/staff/veena.jpg",
     "bio": "Have you tried reading the man page?",
     "email": "veena.ramadas@research.iiit.ac.in",
-    "hours": "Monday, 4 - 5 pm (LSI - THub 4th floor)"
+    "time": "4–5PM on Mondays",
+    "location": "LSI, THub 4th Floor"
   },
   {
     "name": "Devansh Bansal",
@@ -45,7 +50,8 @@
     "image": "/staff/devansh.jpg",
     "bio": "I am not a TA",
     "email": "devansh.bansal@research.iiit.ac.in",
-    "hours": "Friday 3:30 - 5:00 PM @ Workspace"
+    "time": "3:30–5PM on Fridays",
+    "location": "Workspace"
   },
   {
     "name": "Nandini Chakaravarthy",
@@ -53,7 +59,8 @@
     "image": "/staff/nan.jpg",
     "bio": "ⓘ This person is associated with a local terrorist organization.",
     "email": "nandini.c@research.iiit.ac.in",
-    "hours": "10-11pm @ SERC, THub 5th floor"
+    "time": "10–11PM",
+    "location": "SERC, THub 5th Floor"
   },
   {
     "name": "Kartik Gupta",
@@ -61,7 +68,8 @@
     "image": "/staff/kartik.jpg",
     "bio": "There will be no foolish wand waving in this course",
     "email": "kartik.gu@students.iiit.ac.in",
-    "hours": "Saturday 10 - 11pm @ Gaming workspace"
+    "time": "10–11PM on Saturdays",
+    "location": "Gaming Workspace"
   },
   {
     "name": "Shivek Gupta",
@@ -69,7 +77,8 @@
     "image": "/staff/shivek.jpg",
     "bio": "Debug. Learn. Repeat.",
     "email": "shivek.gupta@students.iiit.ac.in",
-    "hours": "Friday, 12 pm - 1 pm"
+    "time": "12–1PM on Fridays",
+    "location": ""
   },
   {
     "name": "Mohammed Sami",
@@ -77,69 +86,80 @@
     "image": "/staff/sami.jpg",
     "bio": "Hi, I will send my intro in a minute",
     "email": "mohammed.sami@research.iiit.ac.in",
-    "hours": "Saturday 10 - 11 AM @ Precog"
+    "time": "10–11AM on Saturdays",
+    "location": "Precog"
   },
   {
     "name": "Kausheya Roy",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Laveena Jain",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Manav Beriwal",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Shubham Goel",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
+    "image": "/staff/shubham.jpeg",
+    "bio": "'It's-a Me, Mario!'",
+    "email": "shubham.goel@students.iiit.ac.in",
+    "time": "Wednesday 2:00-3:00 pm",
+    "location": "CVIT"
   },
   {
     "name": "Swam Singla",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Mohit Sriram",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Samyak Jain",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Shardul Joshi",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   },
   {
     "name": "Velugubantla Akshitha Gayatri",
-    "role":"Teaching Assistant",
+    "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
-    "hours": ""
+    "time": "",
+    "location": ""
   }
 ]
