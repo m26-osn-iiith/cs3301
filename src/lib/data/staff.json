@@ -4,43 +4,80 @@
     "role": "Instructor",
     "image": "/staff/deepak-gangadharan.png",
     "bio": "Assistant Professor at IIIT Hyderabad. Part of Computer Systems Group.",
-    "email": "",
+    "email": "deepak.g@iiit.ac.in",
     "hours": ""
   },
   {
     "name": "Gautam Bhetanabhotla",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
-  },
-  {
-    "name": "Shubham Goel",
-    "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
+    "image": "/staff/gautam.jpg",
+    "bio": "she operating on my system till i network",
+    "email": "gautam.bhetanabhotla@students.iiit.ac.in",
+    "hours": "5-6 PM on Tuesdays @ Kassi workspace"
   },
   {
     "name": "Advait Dintakurti",
     "role": "Teaching Assistant",
+    "image": "/staff/advait.png",
     "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
+    "email": "advait.dintakurti@research.iiit.ac.in",
+    "hours": "Fridays 2:30PM - 3:30PM @ MTNLP"
+  },
+  {
+    "name": "Tatva Agarwal",
+    "role": "Teaching Assistant",
+    "image": "/staff/tatva.jpg",
+    "bio": "An AI Prompt Stack ≠ Operating System",
+    "email": "tatva.agarwal@research.iiit.ac.in",
+    "hours": "Friday 12 - 1PM @ LSI, 4th Floor THub (Himalaya D-Block)"
+  },
+  {
+    "name": "Veena Ramadas",
+    "role": "Teaching Assistant",
+    "image": "/staff/veena.jpg",
+    "bio": "Have you tried reading the man page?",
+    "email": "veena.ramadas@research.iiit.ac.in",
+    "hours": "Monday, 4 - 5 pm (LSI - THub 4th floor)"
   },
   {
     "name": "Devansh Bansal",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
+    "image": "/staff/devansh.jpg",
+    "bio": "I am not a TA",
+    "email": "devansh.bansal@research.iiit.ac.in",
+    "hours": "Friday 3:30 - 5:00 PM @ Workspace"
+  },
+  {
+    "name": "Nandini Chakravarthy",
+    "role": "Teaching Assistant",
+    "image": "/staff/nan.jpg",
+    "bio": "ⓘ This person is associated with a local terrorist organization.",
+    "email": "nandini.c@research.iiit.ac.in",
+    "hours": "10-11pm @ SERC, THub 5th floor"
   },
   {
     "name": "Kartik Gupta",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
+    "image": "/staff/kartik.jpg",
+    "bio": "There will be no foolish wand waving in this course",
+    "email": "kartik.gu@students.iiit.ac.in",
+    "hours": "Saturday 10 - 11pm @ Gaming workspace"
+  },
+  {
+    "name": "Shivek Gupta",
+    "role": "Teaching Assistant",
+    "image": "/staff/shivek.jpg",
+    "bio": "Debug. Learn. Repeat.",
+    "email": "shivek.gupta@students.iiit.ac.in",
+    "hours": "Friday, 12 pm - 1 pm"
+  },
+  {
+    "name": "Mohammed Sami",
+    "role": "Teaching Assistant",
+    "image": "/staff/sami.jpg",
+    "bio": "Hi, I will send my intro in a minute",
+    "email": "mohammed.sami@research.iiit.ac.in",
+    "hours": "Saturday 10 - 11 AM @ Precog"
   },
   {
     "name": "Kausheya Roy",
@@ -64,7 +101,14 @@
     "hours": ""
   },
   {
-    "name": "Mohammed Sami",
+    "name": "Shubham Goel",
+    "role": "Teaching Assistant",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "",
+    "hours": ""
+  },
+  {
+    "name": "Swam Singla",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
@@ -85,29 +129,15 @@
     "hours": ""
   },
   {
-    "name": "Shivek Gupta",
+    "name": "Shardul Joshi",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
     "hours": ""
   },
   {
-    "name": "Shrinivas Joshi",
-    "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
-  },
-  {
-    "name": "Tatva Agarwal",
-    "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "hours": ""
-  },
-  {
-    "name": "Veena Ramadas",
-    "role": "Teaching Assistant",
+    "name": "Velugubantla Akshitha Gayatri",
+    "role":"Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
     "hours": ""
