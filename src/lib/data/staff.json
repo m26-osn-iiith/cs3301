@@ -27,6 +27,15 @@
     "location": "MTNLP"
   },
   {
+    "name": "Shubham Goel",
+    "role": "Teaching Assistant",
+    "image": "/staff/shubham.jpeg",
+    "bio": "'It's-a Me, Mario!'",
+    "email": "shubham.goel@students.iiit.ac.in",
+    "time": "Wednesday 2:00-3:00 pm",
+    "location": "CVIT"
+  },
+  {
     "name": "Tatva Agarwal",
     "role": "Teaching Assistant",
     "image": "/staff/tatva.jpg",
@@ -92,62 +101,59 @@
   {
     "name": "Kausheya Roy",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
-    "location": ""
+    "image": "/staff/kausheya.jpg",
+    "bio": "Paging ya Swapping? Thrashing! Performance slows, my brother!",
+    "email": "kausheya.roy@students.iiit.ac.in",
+    "time": "1–2PM on Fridays",
+    "location": "CVIT"
   },
   {
     "name": "Laveena Jain",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
-    "location": ""
+    "image": "/staff/laveena.jpg",
+    "bio": "I am groot",
+    "email": "laveena.jain@research.iiit.ac.in",
+    "time": "4–5PM on Tuesdays",
+    "location": "SERC (THub 5th Floor)"
   },
   {
     "name": "Manav Beriwal",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
-    "location": ""
-  },
-  {
-    "name": "Shubham Goel",
-    "role": "Teaching Assistant",
-    "image": "/staff/shubham.jpeg",
-    "bio": "'It's-a Me, Mario!'",
-    "email": "shubham.goel@students.iiit.ac.in",
-    "time": "Wednesday 2:00-3:00 pm",
-    "location": "CVIT"
-  },
-  {
-    "name": "Swam Singla",
-    "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
+    "image": "/staff/manav.jpg",
+    "bio": "Pikachu",
+    "email": "manav.beriwal@students.iiit.ac.in",
+    "time": "12–1PM on Fridays",
     "location": ""
   },
   {
     "name": "Mohit Sriram",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
-    "location": ""
+    "image": "/staff/mohit.jpg",
+    "bio": "munch",
+    "email": "mohitsriram.n@students.iiit.ac.in",
+    "time": "9–10PM on Tuesdays",
+    "location": "LTRC (MTNLP balcony)"
   },
   {
     "name": "Samyak Jain",
     "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
+    "image": "/staff/samyak.jpg",
+    "bio": "I've got 99 problems, but a kernel panic ain't one.",
+    "email": "samyak.jain.2k24@students.iiit.ac.in",
+    "time": "12–1PM on Fridays",
     "location": ""
   },
   {
     "name": "Shardul Joshi",
+    "role": "Teaching Assistant",
+    "image": "/staff/shardul.jpg",
+    "bio": "Teaching Assistant | Operating Systems & Networks",
+    "email": "shrinivas.joshi@students.iiit.ac.in",
+    "time": "1–2PM on Fridays",
+    "location": ""
+  },
+  {
+    "name": "Swam Singla",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
     "email": "",
