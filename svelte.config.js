@@ -34,6 +34,29 @@ const RESOURCE_KEYWORDS = {
 	'Patch': 'patch',
 };
 
+function rehypeHeadingIds() {
+	function slugify(text) {
+		return text.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
+	}
+
+	function text(node) {
+		if (node.type === 'text') return node.value;
+		return (node.children ?? []).map(text).join('');
+	}
+
+	function walk(node) {
+		if (node.type === 'element' && (node.tagName === 'h1' || node.tagName === 'h2')) {
+			if (!node.properties?.id) {
+				node.properties = node.properties ?? {};
+				node.properties.id = slugify(text(node));
+			}
+		}
+		node.children?.forEach(walk);
+	}
+
+	return (tree) => walk(tree);
+}
+
 function remarkResourceLinks() {
 	function makeHTML(href, keyword, subtitle) {
 		const type = RESOURCE_KEYWORDS[keyword];
@@ -86,6 +109,7 @@ export default {
 			extensions: ['.md'],
 			highlight: { highlighter },
 			remarkPlugins: [remarkResourceLinks],
+			rehypePlugins: [rehypeHeadingIds],
 		}),
 	],
 	kit: {
