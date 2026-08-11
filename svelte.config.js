@@ -22,6 +22,7 @@ const RESOURCE_ICONS = {
 	recording: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`,
 	notes:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
 	answers:   `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
+	patch:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="12" y1="9" x2="12" y2="15"/></svg>`,
 };
 
 const RESOURCE_KEYWORDS = {
@@ -30,6 +31,7 @@ const RESOURCE_KEYWORDS = {
 	'Recording': 'recording',
 	'Notes': 'notes',
 	'Answers': 'answers',
+	'Patch': 'patch',
 };
 
 function remarkResourceLinks() {
@@ -37,6 +39,9 @@ function remarkResourceLinks() {
 		const type = RESOURCE_KEYWORDS[keyword];
 		const icon = RESOURCE_ICONS[type];
 		const sub = subtitle ? `<span class="resource-sub">${subtitle}</span>` : '';
+		if (href.endsWith('.diff')) {
+			return `<button type="button" class="resource-tile diff-viewer-btn" data-href="${href}"><span class="resource-icon">${RESOURCE_ICONS.patch}</span><span class="resource-label">${keyword}</span>${sub}</button>`;
+		}
 		return `<a class="resource-tile" href="${href}"><span class="resource-icon">${icon}</span><span class="resource-label">${keyword}</span>${sub}</a>`;
 	}
 

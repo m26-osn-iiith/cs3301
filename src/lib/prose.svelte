@@ -1,7 +1,10 @@
 <script>
   import { onMount } from 'svelte';
+  import Diffviewer from '$lib/diffviewer.svelte';
+
   let { children } = $props();
   let ref = $state(null);
+  let diffurl = $state(null);
 
   function inject(root) {
     root.querySelectorAll('pre.shiki').forEach(block => {
@@ -28,6 +31,15 @@
     inject(ref);
     const observer = new MutationObserver(() => inject(ref));
     observer.observe(ref, { childList: true, subtree: true });
+
+    ref.addEventListener('click', (e) => {
+      const btn = e.target.closest('.diff-viewer-btn');
+      if (btn) {
+        e.preventDefault();
+        diffurl = btn.dataset.href;
+      }
+    });
+
     return () => observer.disconnect();
   });
 </script>
@@ -35,3 +47,7 @@
 <div bind:this={ref} class="prose">
   {@render children()}
 </div>
+
+{#if diffurl}
+  <Diffviewer url={diffurl} onclose={() => diffurl = null} />
+{/if}
