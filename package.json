@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && pagefind --site build --output-subdir pagefind",
+    "build": "vite build && pagefind --site build --output-subdir pagefind && cp -r build/pagefind static/pagefind",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

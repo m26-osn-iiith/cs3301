@@ -11,6 +11,7 @@
 
   let { onclose = () => {} } = $props();
 
+
   const nav = [
     { type: 'item', label: 'Home', href: '/' },
     { type: 'item', label: 'Calendar', href: '/calendar' },
@@ -123,17 +124,19 @@
   {/each}
 </nav>
 
-<div class="footer">
-  <button class="icon-btn" onclick={toggletheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
-    {#if theme === 'dark'}
-      <Sun size={16} strokeWidth={2} />
-    {:else}
-      <Moon size={16} strokeWidth={2} />
-    {/if}
-  </button>
-  <a href="https://forms.cloud.microsoft/r/wPh7YEGdz5" target="_blank" rel="noopener" class="icon-btn" aria-label="Feedback Form">
-    <Forms size={16} />
-  </a>
+<div class="sidebar-bottom">
+  <div class="footer">
+    <button class="icon-btn" onclick={toggletheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
+      {#if theme === 'dark'}
+        <Sun size={16} strokeWidth={2} />
+      {:else}
+        <Moon size={16} strokeWidth={2} />
+      {/if}
+    </button>
+    <a href="https://forms.cloud.microsoft/r/wPh7YEGdz5" target="_blank" rel="noopener" class="icon-btn" aria-label="Feedback Form">
+      <Forms size={16} />
+    </a>
+  </div>
 </div>
 
 <style>
@@ -240,13 +243,21 @@
     font-size: 13.5px;
   }
 
-  .footer {
+  .sidebar-bottom {
     margin-top: auto;
-    padding-top: 14px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 4px;
   }
+
 
   .icon-btn {
     display: flex;

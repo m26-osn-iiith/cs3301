@@ -1,14 +1,17 @@
 <script>
   import '../app.css';
   import Sidebar from '$lib/sidebar.svelte';
+  import Search from '$lib/search.svelte';
   import { page } from '$app/state';
   import favicon from '$lib/assets/favicon.svg';
   import Menu from 'lucide-svelte/icons/menu';
   import X from 'lucide-svelte/icons/x';
+  import SearchIcon from 'lucide-svelte/icons/search';
   import course from '$lib/data/course.json';
 
   let { children } = $props();
   let draweropen = $state(false);
+  let searchopen = $state(false);
 
   $effect(() => {
     page.url.pathname;
@@ -24,6 +27,12 @@
 </svelte:head>
 
 <div class="layout">
+  <Search bind:open={searchopen} />
+
+  <button class="search-btn" onclick={() => searchopen = true} aria-label="Search (⌘K)">
+    <SearchIcon size={14} />
+  </button>
+
   <aside class="sidebar">
     <Sidebar />
   </aside>
@@ -51,7 +60,7 @@
     <Sidebar onclose={() => draweropen = false} />
   </div>
 
-  <main class="main">
+  <main class="main" data-pagefind-body>
     <div class="content">
       {@render children()}
     </div>
@@ -102,7 +111,35 @@
     margin: 0 auto;
   }
 
+  .search-btn {
+    position: fixed;
+    top: 24px;
+    right: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-3);
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.12s, color 0.12s;
+    z-index: 30;
+  }
+
+  .search-btn:hover {
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+
   @media (max-width: 960px) {
+    .search-btn {
+      display: none;
+    }
+
     .sidebar {
       display: none;
     }

@@ -168,8 +168,8 @@
 
   .toc-panel {
     position: absolute;
-    top: 0;
-    right: 38px;
+    top: calc(100% + 6px);
+    right: 0;
     width: 220px;
     max-height: 70vh;
     overflow-x: hidden;
