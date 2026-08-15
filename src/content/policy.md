@@ -24,6 +24,14 @@ The grading distribution for the course is as follows:
 - **Plagiarism**: zero tolerance. Can result in an F grade.
 - **Class timings**: please respect them.
 
+## Late Days
+
+- You will have a total of 7 late days which can be used for both mid and end submissions across all **three mini-projects**. Any commit made after the deadline of a mini-project will be counted as a late day.
+- If you submit after the deadline and your late days have been exhuasted, your submission will not be considered.
+- The late day policy applies only to the mini-projects and not to the course project.
+
+Use your late days wisely.
+
 ## Use of AI tools
 
 > Note: this section is subject to change
