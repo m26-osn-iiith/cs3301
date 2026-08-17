@@ -153,19 +153,20 @@
     "location": ""
   },
   {
+    "name": "Velugubantla Akshitha Gayatri",
+    "role": "Teaching Assistant",
+    "image": "/staff/akshitha.png",
+    "bio": "I love Operating Systems and Networks.",
+    "email": "akshitha.v@students.iiit.ac.in",
+    "time": "5–6PM on Wednesdays",
+    "location": "DSAC"
+  },
+  {
     "name": "Swam Singla",
     "role": "Teaching Assistant",
     "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
-    "location": ""
-  },
-  {
-    "name": "Velugubantla Akshitha Gayatri",
-    "role": "Teaching Assistant",
-    "bio": "I love Operating Systems and Networks.",
-    "email": "",
-    "time": "",
-    "location": ""
+    "email": "swam.singla@students.iiit.ac.in",
+    "time": "10–11AM on Wednesdays",
+    "location": "SBI Workspace"
   }
 ]
