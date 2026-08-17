@@ -12,6 +12,63 @@
     return dt.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
   }
 
+  function escapeIcs(value = '') {
+    return String(value)
+      .replace(/\\/g, '\\\\')
+      .replace(/;/g, '\\;')
+      .replace(/,/g, '\\,')
+      .replace(/\r?\n/g, '\\n');
+  }
+
+  function formatIcsDate(dateString) {
+    return dateString.replace(/-/g, '');
+  }
+
+  function addDays(dateString, days) {
+    const dt = new Date(`${dateString}T12:00:00Z`);
+    dt.setUTCDate(dt.getUTCDate() + days);
+    return dt.toISOString().slice(0, 10);
+  }
+
+  function downloadCalendar() {
+    const dtStamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//CS3301//Calendar Export//EN',
+      'CALSCALE:GREGORIAN',
+      ...events.flatMap((ev) => {
+        const date = ev.date;
+        const uid = `${date}-${(ev.title || 'event').toLowerCase().replace(/[^a-z0-9]+/g, '-')}`.replace(/^-|-$/g, '');
+        const summary = escapeIcs(ev.title);
+        const category = escapeIcs(typelabel[ev.type] ?? ev.type);
+
+        return [
+          'BEGIN:VEVENT',
+          `UID:${uid}@cs3301`,
+          `DTSTAMP:${dtStamp}`,
+          `DTSTART;VALUE=DATE:${formatIcsDate(date)}`,
+          `DTEND;VALUE=DATE:${formatIcsDate(addDays(date, 1))}`,
+          `SUMMARY:${summary}`,
+          `CATEGORIES:${category}`,
+          'END:VEVENT'
+        ];
+      }),
+      'END:VCALENDAR'
+    ];
+
+    const ics = `${lines.join('\r\n')}\r\n`;
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = 'cs3301-calendar.ics';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
+
   const bymonth = events.reduce((acc, ev) => {
     const m = monthof(ev.date);
     if (!acc[m]) acc[m] = [];
@@ -25,8 +82,11 @@
 </svelte:head>
 
 <div class="page-header">
-  <h1>Calendar</h1>
-  <p>Monsoon 2026</p>
+  <div>
+    <h1>Calendar</h1>
+    <p>Monsoon 2026</p>
+  </div>
+  <button type="button" class="export-button" on:click={downloadCalendar}>Export</button>
 </div>
 
 {#if events.length === 0}
@@ -55,6 +115,34 @@
 {/if}
 
 <style>
+  .page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .export-button {
+    appearance: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .export-button:hover {
+    background: var(--hover-bg);
+    border-color: var(--link);
+    transform: translateY(-1px);
+  }
+
   .empty {
     border: 1.5px dashed var(--border);
     border-radius: 10px;
