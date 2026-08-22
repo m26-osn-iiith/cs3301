@@ -1,0 +1,110 @@
+diff --git a/Makefile b/Makefile
+index f59a9ad..298d9cf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -146,6 +146,7 @@ UPROGS=\
+ 	$U/_forphan\
+ 	$U/_dorphan\
+ 	$U/_sync\
++	$U/_testfcfs\
+ 
+ fs.img: mkfs/mkfs README $(UPROGS)
+ 	mkfs/mkfs fs.img README $(UPROGS)
+@@ -167,7 +168,7 @@ QEMUGDB = $(shell if $(QEMU) -help | grep -q '^-gdb'; \
+ 	then echo "-gdb tcp::$(GDBPORT)"; \
+ 	else echo "-s -p $(GDBPORT)"; fi)
+ ifndef CPUS
+-CPUS := 3
++CPUS := 1
+ endif
+ 
+ QEMUOPTS = -machine virt -bios none -kernel $K/kernel -m 128M -smp $(CPUS) -nographic
+diff --git a/kernel/proc.c b/kernel/proc.c
+index aa792ba..a828e98 100644
+--- a/kernel/proc.c
++++ b/kernel/proc.c
+@@ -424,40 +424,30 @@ kwait(uint64 addr)
+ void
+ scheduler(void)
+ {
+-  struct proc *p;
++  struct proc *p, *chosen;
+   struct cpu *c = mycpu();
+ 
+   c->proc = 0;
+-  for (;;) {
+-    // The most recent process to run may have had interrupts
+-    // turned off; enable them to avoid a deadlock if all
+-    // processes are waiting. Then turn them back off
+-    // to avoid a possible race between an interrupt
+-    // and wfi.
++  for(;;){
+     intr_on();
+-    intr_off();
+ 
+-    int found = 0;
+-    for (p = proc; p < &proc[NPROC]; p++) {
++    chosen = 0;
++    for(p = proc; p < &proc[NPROC]; p++){
+       acquire(&p->lock);
+-      if (p->state == RUNNABLE) {
+-        // Switch to chosen process.  It is the process's job
+-        // to release its lock and then reacquire it
+-        // before jumping back to us.
+-        p->state = RUNNING;
+-        c->proc = p;
+-        swtch(&c->context, &p->context);
+-
+-        // Process is done running for now.
+-        // It should have changed its p->state before coming back.
+-        c->proc = 0;
+-        found = 1;
+-      }
++      if(p->state == RUNNABLE && (chosen == 0 || p->pid < chosen->pid))
++        chosen = p;
+       release(&p->lock);
+     }
+-    if (found == 0) {
+-      // nothing to run; stop running on this core until an interrupt.
+-      asm volatile("wfi");
++
++    if(chosen){
++      acquire(&chosen->lock);
++      if(chosen->state == RUNNABLE){
++        chosen->state = RUNNING;
++        c->proc = chosen;
++        swtch(&c->context, &chosen->context);
++        c->proc = 0;
++      }
++      release(&chosen->lock);
+     }
+   }
+ }
+diff --git a/user/testfcfs.c b/user/testfcfs.c
+new file mode 100644
+index 0000000..d6d650d
+--- /dev/null
++++ b/user/testfcfs.c
+@@ -0,0 +1,22 @@
++#include "kernel/types.h"
++#include "kernel/stat.h"
++#include "user/user.h"
++
++int
++main(void)
++{
++  int i, j;
++
++  for(i = 0; i < 4; i++){
++    if(fork() == 0){
++      for(j = 0; j < 5; j++)
++        printf("pid %d: %d\n", getpid(), j);
++      exit(0);
++    }
++  }
++
++  for(i = 0; i < 4; i++)
++    wait(0);
++
++  exit(0);
++}
