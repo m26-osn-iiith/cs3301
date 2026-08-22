@@ -1,0 +1,16 @@
+1a:
+- scheduler() acquires p->lock
+- checks if p->state == RUNNABLE
+- sets p->state = RUNNING
+- sets c->proc = p
+- calls swtch()
+
+1b:
+- process acquires p->lock (in yield(), sleep(), or kexit())
+- changes p->state to RUNNABLE, SLEEPING, or ZOMBIE
+- calls sched() -> swtch() to switch back to scheduler thread
+- scheduler() sets c->proc = 0
+- scheduler() releases p->lock so process can be picked up again
+
+2:
+No, it scans proc[] linearly from start to end
