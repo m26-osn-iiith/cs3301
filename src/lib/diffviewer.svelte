@@ -2,6 +2,7 @@
   import { tick } from 'svelte';
   import X from 'lucide-svelte/icons/x';
   import List from 'lucide-svelte/icons/list';
+  import Download from 'lucide-svelte/icons/download';
 
   let { url, onclose } = $props();
   let raw = $state('');
@@ -96,7 +97,12 @@
         </button>
         <span class="modal-title">{url.split('/').pop()}</span>
       </div>
-      <button type="button" class="close-btn" onclick={onclose}><X size={15} /></button>
+      <div class="header-right">
+        <a class="sidebar-btn" href={url} download aria-label="Download diff">
+          <Download size={14} />
+        </a>
+        <button type="button" class="close-btn" onclick={onclose}><X size={15} /></button>
+      </div>
     </div>
 
     {#if loading}
@@ -166,10 +172,11 @@
     flex-shrink: 0;
   }
 
-  .header-left {
+  .header-left,
+  .header-right {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
   }
 
   .modal-title {
@@ -180,7 +187,8 @@
   }
 
   .sidebar-btn,
-  .close-btn {
+  .close-btn,
+  a.sidebar-btn {
     display: flex;
     align-items: center;
     color: var(--text-3);
@@ -194,7 +202,8 @@
   }
 
   .sidebar-btn:hover,
-  .close-btn:hover {
+  .close-btn:hover,
+  a.sidebar-btn:hover {
     color: var(--text);
     background: var(--hover-bg);
   }
