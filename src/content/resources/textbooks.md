@@ -12,4 +12,6 @@ Free at [ostep.org](https://pages.cs.wisc.edu/~remzi/OSTEP/).
 Smruti R. Sarangi, 2025.
 
 ### Computer Networking: A Top-Down Approach
-James F. Kurose and Keith W. Ross, 2020.
+
+James F. Kurose and Keith W. Ross, 2020. <br>
+[Download PDF](/textbooks/networking.pdf)
