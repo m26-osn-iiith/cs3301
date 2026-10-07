@@ -1,6 +1,7 @@
 <script>
   import ChevronLeft from 'lucide-svelte/icons/chevron-left';
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
+  import FileText from 'lucide-svelte/icons/file-text';
   import Prose from '$lib/prose.svelte';
 
   let { data } = $props();
@@ -19,14 +20,24 @@
   <a href="/lectures" class="breadcrumb">Lectures</a>
 
   <h1 class="title">{meta.title}</h1>
-  <div class="meta">Week {meta.week} · {fmtdate(meta.date)}</div>
+  {#if meta.date}
+    <div class="meta">Week {meta.week} · {fmtdate(meta.date)}</div>
+  {/if}
 
   {#if meta.summary}
     <p class="summary">{meta.summary}</p>
   {/if}
 
   <Prose>
-    <svelte:component this={Content} />
+    {#if Content}
+      <Content />
+    {:else}
+      <h3>Slides</h3>
+      <a class="resource-tile" href={meta.slides}>
+        <span class="resource-icon"><FileText size={15} strokeWidth={2} /></span>
+        <span class="resource-label">Slides</span>
+      </a>
+    {/if}
   </Prose>
 
   <nav class="prevnext">

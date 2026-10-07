@@ -21,12 +21,14 @@
   <div class="list">
     {#each lectures as lec}
       <a href="/lectures/{lec.slug}" class="card lecture-card">
-        <div class="card-meta">
-          <span class="badge badge-lecture">Week {lec.week}</span>
-          <span class="card-date">{fmtdate(lec.date)}</span>
-        </div>
+        {#if lec.date}
+          <div class="card-meta">
+            <span class="badge badge-lecture">Week {lec.week}</span>
+            <span class="card-date">{fmtdate(lec.date)}</span>
+          </div>
+        {/if}
         <div class="card-title">{lec.title}</div>
-        <div class="card-desc">{lec.summary}</div>
+        <div class="card-desc">{lec.summary ?? ''}</div>
       </a>
     {/each}
   </div>
