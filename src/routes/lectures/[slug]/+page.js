@@ -8,12 +8,12 @@ export function entries() {
 }
 
 export async function load({ params }) {
-	const path = `/src/content/lectures/${params.slug}.md`;
-	if (!mods[path]) throw error(404);
 	const idx = lectures.findIndex((l) => l.slug === params.slug);
-	const mod = await mods[path]();
+	if (idx === -1) throw error(404);
+	const path = `/src/content/lectures/${params.slug}.md`;
+	const mod = mods[path] ? await mods[path]() : null;
 	return {
-		component: mod.default,
+		component: mod?.default ?? null,
 		meta: lectures[idx],
 		prev: lectures[idx - 1] ?? null,
 		next: lectures[idx + 1] ?? null,
