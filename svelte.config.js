@@ -23,6 +23,8 @@ const RESOURCE_ICONS = {
 	notes:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
 	answers:   `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
 	patch:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="12" y1="9" x2="12" y2="15"/></svg>`,
+	download:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+	questions: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`,
 	doubts:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
 };
 
@@ -34,6 +36,8 @@ const RESOURCE_KEYWORDS = {
 	'Answers': 'answers',
 	'Patch': 'patch',
 	'Doubts': 'doubts',
+	'Download': 'download',
+	'Questions': 'questions',
 };
 
 function rehypeHeadingIds() {
@@ -67,7 +71,8 @@ function remarkResourceLinks() {
 		if (href.endsWith('.diff')) {
 			return `<button type="button" class="resource-tile diff-viewer-btn" data-href="${href}"><span class="resource-icon">${RESOURCE_ICONS.patch}</span><span class="resource-label">${keyword}</span>${sub}</button>`;
 		}
-		return `<a class="resource-tile" href="${href}"><span class="resource-icon">${icon}</span><span class="resource-label">${keyword}</span>${sub}</a>`;
+		const attrs = type === 'download' ? ' download' : /^https?:\/\//.test(href) ? ' target="_blank" rel="noopener"' : '';
+		return `<a class="resource-tile" href="${href}"${attrs}><span class="resource-icon">${icon}</span><span class="resource-label">${keyword}</span>${sub}</a>`;
 	}
 
 	function walk(node) {
