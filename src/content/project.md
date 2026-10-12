@@ -11,6 +11,6 @@ title: Course Project
 [Download - Course Project PDF](/project/Course_Project.pdf)
 
 ### Docs
-[Doubts - Doubts Doc](https://hackmd.io/@m26-osn/rywN8PqiGx)
+[Questions - Questions Doc](https://hackmd.io/@m26-osn/rywN8PqiGx)
 
-[Questions - Questions Doc](https://hackmd.io/@m26-osn/rkwRUP5sMe)
+[Answers - Answers Doc](https://hackmd.io/@m26-osn/rkwRUP5sMe)
