@@ -1,4 +1,5 @@
 <script>
+  import 'katex/dist/katex.min.css';
   import '../app.css';
   import Sidebar from '$lib/sidebar.svelte';
   import Search from '$lib/search.svelte';

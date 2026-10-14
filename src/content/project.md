@@ -2,10 +2,8 @@
 title: Course Project
 ---
 
-<div class="callout-caution">
-  <span class="callout-title">⚠ Caution</span>
-  Deleting the <code>AGENTS.md</code> or <code>CLAUDE.md</code> files from the provisioned repositories will result in a penalty.
-</div>
+> [!CAUTION]
+> Deleting the `AGENTS.md` or `CLAUDE.md` files from the provisioned repositories will result in a penalty.
 
 ### Project Document
 [Download - Course Project PDF](/project/Course_Project.pdf)
