@@ -15,3 +15,9 @@ Smruti R. Sarangi, 2025.
 
 James F. Kurose and Keith W. Ross, 2020. <br>
 [Download PDF](/textbooks/networking.pdf)
+
+### Concurrency: The Little Book of Semaphores
+
+Allen B. Downey, 2016. <br>
+[Download PDF](/textbooks/LittleBookOfSemaphores.pdf)
+[Original Site](https://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf)
