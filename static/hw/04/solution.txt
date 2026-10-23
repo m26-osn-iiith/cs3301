@@ -1,0 +1,35 @@
+diff --git a/kernel/fcntl.h b/kernel/fcntl.h
+index 7884a22..af31d9a 100644
+--- a/kernel/fcntl.h
++++ b/kernel/fcntl.h
+@@ -4,3 +4,4 @@
+ #define O_CREATE 0x200
+ #define O_TRUNC  0x400
+ #define O_NOFOLLOW 0x800
++#define O_APPEND 0x1000
+diff --git a/kernel/sysfile.c b/kernel/sysfile.c
+index 2512591..adb6a91 100644
+--- a/kernel/sysfile.c
++++ b/kernel/sysfile.c
+@@ -374,7 +374,7 @@ sys_open(void)
+     f->major = ip->major;
+   } else {
+     f->type = FD_INODE;
+-    f->off = 0;
++    f->off = (omode & O_APPEND) ? ip->size : 0;
+   }
+   f->ip = ip;
+   f->readable = !(omode & O_WRONLY);
+diff --git a/user/sh.c b/user/sh.c
+index 507ce42..ad931fc 100644
+--- a/user/sh.c
++++ b/user/sh.c
+@@ -395,7 +395,7 @@ parseredirs(struct cmd *cmd, char **ps, char *es)
+       cmd = redircmd(cmd, q, eq, O_WRONLY | O_CREATE | O_TRUNC, 1);
+       break;
+     case '+': // >>
+-      cmd = redircmd(cmd, q, eq, O_WRONLY | O_CREATE, 1);
++      cmd = redircmd(cmd, q, eq, O_WRONLY | O_CREATE | O_APPEND, 1);
+       break;
+     }
+   }
